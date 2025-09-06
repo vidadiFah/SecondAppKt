@@ -18,7 +18,29 @@
         android:textColor="@color/blue"/>
 
     <TextView
+        android:id="@+id/dollar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/thinLine"
+        app:layout_constraintEnd_toStartOf="@id/tvPrice"
+        android:textColor="@color/gray_dark"
+        android:textStyle="bold"
+        android:text="$"/>
+
+    <TextView
         android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/thinLine"
+        app:layout_constraintEnd_toStartOf="@id/tvDay"
+        android:textColor="@color/gray_dark"
+        android:textStyle="bold"
+        tools:text="70"/>
+
+    <TextView
+        android:id="@+id/tvDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +49,7 @@
         android:layout_marginEnd="26dp"
         android:textColor="@color/gray_dark"
         android:textStyle="bold"
-        tools:text="$70/day"/>
+        android:text="/day"/>
 
     <View
         android:id="@+id/thinLine"
