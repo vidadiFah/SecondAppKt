@@ -1,11 +1,17 @@
-package com.example.secondappkt
+package com.example.secondappkt.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.secondappkt.data.models.CarModel
+import com.example.secondappkt.R
 import com.example.secondappkt.databinding.FragmentMainBinding
+import com.example.secondappkt.enums.Shape
+import com.example.secondappkt.enums.Transmission
+import com.example.secondappkt.enums.YesNo
 
 class MainFragment : Fragment() {
 
@@ -29,14 +35,18 @@ class MainFragment : Fragment() {
     }
 
     private fun initView() {
-        carAdapter = CarAdapter(list)
+        carAdapter = CarAdapter(list, ::onClick)
         binding.rvCar.adapter = carAdapter
+    }
+    fun onClick(carModel: CarModel){
+        val action = MainFragmentDirections.actionMainFragmentToDetailCarFragment(carModel)
+        findNavController().navigate(action)
     }
 
     private fun loadData() {
         list = arrayListOf<CarModel>(
             CarModel(
-                imageResId = R.drawable.ic_bmw_5,
+                img = "https://i.ibb.co/6cPRYSYb/image.png",
                 title = "BMW series 5",
                 price = 200,
                 shape = Shape.Sedan,
@@ -44,7 +54,7 @@ class MainFragment : Fragment() {
                 ac = YesNo.Yes
             ),
             CarModel(
-                imageResId = R.drawable.ic_sprinter,
+                img = "https://i.ibb.co/nNNkqcbd/image6.png",
                 title = "Mercedes Sprinter",
                 price = 80,
                 shape = Shape.Van,
@@ -52,7 +62,7 @@ class MainFragment : Fragment() {
                 ac = YesNo.No
             ),
             CarModel(
-                imageResId = R.drawable.ic_honda_fit,
+                img = "https://i.ibb.co/NgQnFsvf/image2.png",
                 title = "Honda Fit",
                 price = 40,
                 shape = Shape.Hatchback,
@@ -60,7 +70,7 @@ class MainFragment : Fragment() {
                 ac = YesNo.No
             ),
             CarModel(
-                imageResId = R.drawable.ic_hyun_palisad,
+                img = "https://i.ibb.co/tM7394nQ/image5.png",
                 title = "Hyundai Palisade",
                 price = 160,
                 shape = Shape.SUV,
@@ -68,7 +78,7 @@ class MainFragment : Fragment() {
                 ac = YesNo.Yes
             ),
             CarModel(
-                imageResId = R.drawable.ic_kia_carnival,
+                img = "https://i.ibb.co/0RHMD9F7/image8.png",
                 title = "Kia Carnival",
                 price = 110,
                 shape = Shape.Minivan,
@@ -76,7 +86,7 @@ class MainFragment : Fragment() {
                 ac = YesNo.Yes
             ),
             CarModel(
-                imageResId = R.drawable.ic_mers_w222,
+                img = "https://i.ibb.co/BHNvw7MP/image1.png",
                 title = "Mercedes W222",
                 price = 220,
                 shape = Shape.Sedan,
@@ -84,7 +94,7 @@ class MainFragment : Fragment() {
                 ac = YesNo.Yes
             ),
             CarModel(
-                imageResId = R.drawable.ic_kia_k3,
+                img = "https://i.ibb.co/N69j5YWM/image9.png",
                 title = "Kia K3",
                 price = 130,
                 shape = Shape.Sedan,
