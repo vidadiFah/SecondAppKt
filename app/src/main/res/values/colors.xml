@@ -5,4 +5,7 @@
     <color name="gray">#CACACA</color>
     <color name="gray_dark">#666666</color>
     <color name="blue">#3954FF</color>
+    <color name="orange">#D88B02</color>
+    <color name="light_gray">#CFCFCF</color>
+    <color name="bg_gray">#252525</color>
 </resources>

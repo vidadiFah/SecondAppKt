@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_host"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/onBoardFragment">
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.secondappkt.ui.MainFragment"
+        android:name="com.example.secondappkt.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/detailCarFragment"
-        android:name="com.example.secondappkt.detail.DetailCarFragment"
+        android:name="com.example.secondappkt.ui.detail.DetailCarFragment"
         android:label="fragment_detial_car"
         tools:layout="@layout/fragment_detial_car">
 
@@ -25,5 +25,14 @@
             android:name="carModel"
             app:argType="com.example.secondappkt.data.models.CarModel"
             app:nullable="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.secondappkt.ui.on_board.OnBoardFragment"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" >
+        <action
+            android:id="@+id/action_onBoardFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

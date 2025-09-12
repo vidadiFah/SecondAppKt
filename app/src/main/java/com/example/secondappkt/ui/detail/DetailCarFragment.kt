@@ -1,4 +1,4 @@
-package com.example.secondappkt.detail
+package com.example.secondappkt.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.secondappkt.data.models.CarModel
 import com.example.secondappkt.databinding.FragmentDetialCarBinding
-import com.example.secondappkt.ui.loadImg
+import com.example.secondappkt.utils.loadImg
 import kotlin.getValue
 
 class DetailCarFragment : Fragment() {
 
     private lateinit var binding: FragmentDetialCarBinding
+    private val args: DetailCarFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,8 +23,6 @@ class DetailCarFragment : Fragment() {
         binding = FragmentDetialCarBinding.inflate(inflater, container, false)
         return binding.root
     }
-
-    private val args: DetailCarFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

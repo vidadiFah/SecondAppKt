@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavHost
 import androidx.navigation.fragment.NavHostFragment
-import com.example.secondappkt.ui.MainFragment
+import com.example.secondappkt.ui.main.MainFragment
 import com.example.secondappkt.R
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +14,5 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_controller) as NavHostFragment
         val navController = navHostFragment.navController
-
     }
 }

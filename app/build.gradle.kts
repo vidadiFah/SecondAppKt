@@ -57,4 +57,6 @@ dependencies {
     implementation ("androidx.navigation:navigation-ui:$navVersion")
 
     implementation("com.github.bumptech.glide:glide:5.0.4")
+
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
 }

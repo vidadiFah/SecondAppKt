@@ -1,22 +1,22 @@
-package com.example.secondappkt.ui
+package com.example.secondappkt.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.secondappkt.data.models.CarModel
 import com.example.secondappkt.databinding.ItemCarBinding
+import com.example.secondappkt.utils.loadImg
 
-class CarAdapter(val carList: ArrayList<CarModel>, val onClick: (carModel: CarModel) -> Unit) : RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
+class CarAdapter(val carList: ArrayList<CarModel>, val onClick: (carModel: CarModel) -> Unit) :
+    RecyclerView.Adapter<CarAdapter.CarViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): CarViewHolder {
-        return CarViewHolder(
-            ItemCarBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent, false))
+        return CarViewHolder(ItemCarBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(
@@ -31,7 +31,8 @@ class CarAdapter(val carList: ArrayList<CarModel>, val onClick: (carModel: CarMo
     }
 
 
-    inner class CarViewHolder(private val binding: ItemCarBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class CarViewHolder(private val binding: ItemCarBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(model: CarModel) {
             binding.tvName.text = model.title
             binding.tvPrice.text = model.price.toString()
@@ -45,8 +46,4 @@ class CarAdapter(val carList: ArrayList<CarModel>, val onClick: (carModel: CarMo
             }
         }
     }
-}
-
-fun ImageView.loadImg(img: String){
-    Glide.with(this).load(img).into(this)
 }

@@ -1,4 +1,4 @@
-package com.example.secondappkt.ui
+package com.example.secondappkt.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.secondappkt.data.models.CarModel
-import com.example.secondappkt.R
 import com.example.secondappkt.databinding.FragmentMainBinding
 import com.example.secondappkt.enums.Shape
 import com.example.secondappkt.enums.Transmission
 import com.example.secondappkt.enums.YesNo
+import com.example.secondappkt.ui.main.adapter.CarAdapter
 
 class MainFragment : Fragment() {
 
