@@ -2,9 +2,7 @@ package com.example.secondappkt.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavHost
 import androidx.navigation.fragment.NavHostFragment
-import com.example.secondappkt.ui.main.MainFragment
 import com.example.secondappkt.R
 
 class MainActivity : AppCompatActivity() {

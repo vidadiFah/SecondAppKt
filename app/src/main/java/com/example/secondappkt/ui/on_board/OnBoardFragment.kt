@@ -10,19 +10,25 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.secondappkt.R
 import com.example.secondappkt.data.models.OnBoardModel
-import com.example.secondappkt.databinding.FragmentMainBinding
 import com.example.secondappkt.databinding.FragmentOnBoardBinding
+import com.example.secondappkt.local.Pref
 import com.example.secondappkt.ui.main.adapter.OnBoardAdapter
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
     private lateinit var adapter: OnBoardAdapter
+    private lateinit var pref: Pref
+    private var onBoardBool: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOnBoardBinding.inflate(inflater, container, false)
+        pref = Pref(requireContext())
+        if (pref.getOnBoardBool()){
+            onStartBoard()
+        }
         return binding.root
     }
 
@@ -47,6 +53,7 @@ class OnBoardFragment : Fragment() {
                     binding.tvSkip.visibility = View.INVISIBLE
                     binding.btnStart.setOnClickListener {
                         onStartBoard()
+                        pref.saveOnBoardBool(true)
                     }
                 }
             }

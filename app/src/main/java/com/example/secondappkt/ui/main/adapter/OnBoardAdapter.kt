@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.secondappkt.data.models.OnBoardModel
-import com.example.secondappkt.databinding.FragmentOnBoardBinding
 import com.example.secondappkt.databinding.ItemOnBoardBinding
 import com.example.secondappkt.utils.loadImg
 
@@ -35,8 +34,6 @@ class OnBoardAdapter(private val onBoardList: List<OnBoardModel>): RecyclerView.
             binding.ivOnBoard.loadImg(onBoardModel.img)
             binding.tvTitleOnBoard.text = onBoardModel.title
             binding.tvDescOnBoard.text = onBoardModel.desc
-
-
         }
     }
 }
