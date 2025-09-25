@@ -13,6 +13,7 @@
         android:scaleType="centerCrop"
         android:background="@drawable/rounded_bg"
         android:layout_marginHorizontal="40dp"
+        android:backgroundTint="@color/gray_dark"
         android:clipToOutline="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package com.example.secondappkt.enums
+package com.example.secondappkt.core.enums
 
 enum class Transmission {
     Automatic, Robot, Manual

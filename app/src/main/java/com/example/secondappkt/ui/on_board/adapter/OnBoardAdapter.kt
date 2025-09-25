@@ -1,4 +1,4 @@
-package com.example.secondappkt.ui.main.adapter
+package com.example.secondappkt.ui.on_board.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +12,8 @@ class OnBoardAdapter(private val onBoardList: List<OnBoardModel>): RecyclerView.
         parent: ViewGroup,
         viewType: Int
     ): OnBoardViewHolder {
-        return OnBoardViewHolder(ItemOnBoardBinding.inflate(
+        return OnBoardViewHolder(
+            ItemOnBoardBinding.inflate(
             LayoutInflater.from(parent.context), parent, false))
     }
 
