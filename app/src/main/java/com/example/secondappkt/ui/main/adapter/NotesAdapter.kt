@@ -6,8 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.secondappkt.data.models.NoteModel
 import com.example.secondappkt.databinding.ItemNoteBinding
 
-class NotesAdapter(val notesList: List<NoteModel>) :
+class NotesAdapter(val onLongClick:(NoteModel)-> Unit, val onClick:(NoteModel) -> Unit) :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+
+    private val notesList = arrayListOf<NoteModel>()
+
+    fun addAllNotes(list: List<NoteModel>){
+        notesList.clear()
+        notesList.addAll(list)
+        notifyDataSetChanged()
+    }
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,6 +42,19 @@ class NotesAdapter(val notesList: List<NoteModel>) :
         fun bind(noteModel: NoteModel) = with(binding) {
             tvTitle.text = noteModel.title
             tvDesc.text = noteModel.desc
+            ivNoteBg.setColorFilter(noteModel.color)
+
+            val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
+            tvDate.text = formatter.format(java.util.Date(noteModel.dateCreated))
+
+            itemView.setOnLongClickListener {
+                onLongClick(noteModel)
+                true
+            }
+
+            itemView.setOnClickListener {
+                onClick(noteModel)
+            }
         }
     }
 }
