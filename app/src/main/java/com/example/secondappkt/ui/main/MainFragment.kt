@@ -17,8 +17,8 @@ import com.example.secondappkt.ui.main.adapter.NotesAdapter
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private lateinit var adapter: NotesAdapter
-    var isLayoutChanged: Boolean = false
+    private val adapter = NotesAdapter(::onLongNoteClick)
+    var isLayoutChanged: Boolean = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +36,7 @@ class MainFragment : Fragment() {
 
         binding.btnChangeLayout.setOnClickListener {
             if(isLayoutChanged){
-                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, 1)
+                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                 isLayoutChanged = false
                 binding.btnChangeLayout.setImageResource(R.drawable.ic_linear_view)
             } else {
@@ -54,12 +54,16 @@ class MainFragment : Fragment() {
     }
 
     private fun initView() {
-        adapter = NotesAdapter(loadData())
         binding.rvNotes.adapter = adapter
     }
 
+    private fun loadData() {
+        val list: List<NoteModel> = App.db.dao().getAllNote()
+        adapter.addAllNotes(list)
+    }
 
-    private fun loadData(): List<NoteModel> {
-        return App.db.dao().getAllNote();
+    private fun onLongNoteClick(notes: NoteModel){
+        App.db.dao().deleteNote(notes)
+        loadData()
     }
 }

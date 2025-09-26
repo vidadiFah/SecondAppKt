@@ -9,4 +9,6 @@ data class NoteModel(
     val id: Int? = null,
     val title: String,
     val desc: String,
+    val color: Int,
+    val dateCreated: Long = System.currentTimeMillis()
 )

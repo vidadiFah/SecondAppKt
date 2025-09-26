@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAllNotes"
         android:layout_marginTop="30dp"
-        app:tint="#535353"/>
+        app:tint="@color/search_gray"/>
     
     <ImageView
         android:layout_width="22dp"

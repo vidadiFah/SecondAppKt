@@ -29,14 +29,16 @@ class CreateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
+        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
+
+        var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
         binding.btnReady.setOnClickListener {
             val title = binding.etTitle.text.toString()
             val desc = binding.etDesc.text.toString()
-            App.db.dao().addNote(NoteModel(title = title, desc = desc))
+            App.db.dao().addNote(NoteModel(title = title, desc = desc, color = color))
             findNavController().navigateUp()
         }
-
-
 
 
         binding.etTitle.addTextChangedListener(object : TextWatcher{
@@ -55,18 +57,57 @@ class CreateFragment : Fragment() {
                 p2: Int,
                 p3: Int
             ) {
-                val orange = ContextCompat.getColor(requireContext(), R.color.orange)
-                val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)
                 if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0){
-                    binding.ivPickColor.setColorFilter(orange)
-
+                    binding.btnReady.visibility = View.VISIBLE
                 } else {
-                    binding.ivPickColor.setColorFilter(grayDark)
+                    binding.btnReady.visibility = View.GONE
                 }
             }
-
         })
 
+
+        val orange = ContextCompat.getColor(requireContext(), R.color.orange)
+        val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)
+        var pickColorPressed = true
+        binding.dialogColorPicker.visibility = View.GONE
         binding.btnReady.visibility = View.GONE
+        binding.ivPickColor.setOnClickListener {
+            if(pickColorPressed){
+                binding.ivPickColor.setColorFilter(orange)
+                binding.dialogColorPicker.visibility = View.VISIBLE
+                pickColorPressed = false
+            } else {
+                binding.ivPickColor.setColorFilter(grayDark)
+                binding.dialogColorPicker.visibility = View.GONE
+                pickColorPressed = true
+            }
+        }
+
+
+        val yellow = ContextCompat.getColor(requireContext(), R.color.yellow_note)
+        val purple = ContextCompat.getColor(requireContext(), R.color.purple_note)
+        val rose = ContextCompat.getColor(requireContext(), R.color.rose_note)
+        val red = ContextCompat.getColor(requireContext(), R.color.red_note)
+        val green = ContextCompat.getColor(requireContext(), R.color.green_note)
+        val blue = ContextCompat.getColor(requireContext(), R.color.blue_note)
+        binding.vYellow.setOnClickListener {
+            color = yellow
+        }
+        binding.vPurple.setOnClickListener {
+            color = purple
+        }
+        binding.vRose.setOnClickListener {
+            color = rose
+        }
+        binding.vRed.setOnClickListener {
+            color = red
+        }
+        binding.vGreen.setOnClickListener {
+            color = green
+        }
+        binding.vBlue.setOnClickListener {
+            color = blue
+        }
+
     }
 }

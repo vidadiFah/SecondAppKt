@@ -57,7 +57,10 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment:$navVersion")
     implementation("androidx.navigation:navigation-ui:$navVersion")
 
+    // Glide
     implementation("com.github.bumptech.glide:glide:5.0.4")
+
+    // DotsIndicator
     implementation("com.tbuonomo:dotsindicator:5.1.0")
 
     // Room
