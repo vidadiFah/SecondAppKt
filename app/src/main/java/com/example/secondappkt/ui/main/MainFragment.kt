@@ -13,18 +13,18 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.secondappkt.databinding.FragmentMainBinding
 import com.example.secondappkt.App
 import com.example.secondappkt.R
 import com.example.secondappkt.data.models.NoteModel
-import com.example.secondappkt.databinding.FragmentMainBinding
 import com.example.secondappkt.ui.main.adapter.NotesAdapter
+import com.example.secondappkt.utils.listenerEdit
 
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private val adapter = NotesAdapter(::onLongNoteClick, ::onClick)
-
     private var pickedDate: Calendar? = null
     private var pickedTime: Pair<Int, Int>? = null
     var isLayoutChanged: Boolean = true
@@ -83,31 +83,13 @@ class MainFragment : Fragment() {
             )
             timePicker.show()
         }
-
-        binding.etSearchNote.addTextChangedListener(object : TextWatcher{
-            override fun afterTextChanged(p0: Editable?) {
+        binding.etSearchNote.listenerEdit (onTextChanged={
+            if (binding.etSearchNote.length() > 0) {
+                binding.tvSearchNote.visibility = View.GONE
+            } else {
+                binding.tvSearchNote.visibility = View.VISIBLE
             }
-            override fun beforeTextChanged(
-                p0: CharSequence?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                p0: CharSequence?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-                if (binding.etSearchNote.length() > 0) {
-                    binding.tvSearchNote.visibility = View.GONE
-                } else {
-                    binding.tvSearchNote.visibility = View.VISIBLE
-                }
-            }
-        })
+        } )
 
         binding.dialogDeleteNoteMain.visibility = View.GONE
         binding.vDarkLayer.animate().alpha(0f)

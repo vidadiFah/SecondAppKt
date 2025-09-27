@@ -1,11 +1,11 @@
 package com.example.secondappkt.ui.on_board
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.secondappkt.R
@@ -13,6 +13,8 @@ import com.example.secondappkt.data.models.OnBoardModel
 import com.example.secondappkt.databinding.FragmentOnBoardBinding
 import com.example.secondappkt.data.local.pref.Pref
 import com.example.secondappkt.ui.on_board.adapter.OnBoardAdapter
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
@@ -30,6 +32,7 @@ class OnBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         adapter = OnBoardAdapter(loadOnBoardData())
         binding.vpOnBoard.adapter = adapter
         binding.wormDotsIndicator.attachTo(binding.vpOnBoard)
@@ -58,7 +61,7 @@ class OnBoardFragment : Fragment() {
 
     private fun onStartBoard(){
         pref.saveOnBoardBool(true)
-        findNavController().navigate(R.id.action_onBoardFragment_to_mainFragment)
+        findNavController().navigate(R.id.action_onBoardFragment_to_authFragment)
     }
 
     private fun onSkipBoard(){

@@ -12,6 +12,13 @@ interface NoteDao {
     @Query ("SELECT * FROM note_list ORDER BY id DESC")
     fun getAllNote(): List<NoteModel>
 
+//    @Query("""
+//    SELECT * FROM list_task
+//    WHERE date BETWEEN :startInclusive AND :endInclusive
+//    ORDER BY date DESC
+//""")
+//    fun getByDateRange(startInclusive: Date, endInclusive: Date): List<TaskModel>
+
     @Insert
     fun addNote(noteModel: NoteModel)
 

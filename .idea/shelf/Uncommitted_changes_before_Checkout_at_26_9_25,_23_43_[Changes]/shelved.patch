@@ -1,0 +1,886 @@
+Index: app/src/main/res/layout/fragment_create.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    android:layout_gravity=\"center\"\n    android:gravity=\"center\"\n    android:orientation=\"vertical\"\n    android:background=\"@color/bg_gray\"\n    tools:context=\".ui.create.CreateFragment\">\n\n    <ImageView\n        android:id=\"@+id/iv_arrow_left\"\n        android:layout_width=\"20dp\"\n        android:layout_height=\"20dp\"\n        android:src=\"@drawable/ic_arrow_left\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        android:layout_marginTop=\"26dp\"\n        android:layout_marginStart=\"16dp\"/>\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:id=\"@+id/tv_on_create_date\"\n        android:text=\"31 May 10:40\"\n        android:textStyle=\"bold\"\n        android:textSize=\"18sp\"\n        android:textColor=\"@color/gray_dark\"\n        app:layout_constraintStart_toEndOf=\"@id/iv_arrow_left\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_arrow_left\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_arrow_left\"\n        android:layout_marginStart=\"16dp\"/>\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"Готово\"\n        android:id=\"@+id/btn_ready\"\n        android:textColor=\"@color/orange\"\n        android:textStyle=\"bold\"\n        android:textSize=\"18sp\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_arrow_left\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_arrow_left\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        android:layout_marginEnd=\"20dp\"/>\n\n    <ImageView\n        android:layout_width=\"30dp\"\n        android:layout_height=\"30dp\"\n        android:id=\"@+id/iv_pick_color\"\n        android:padding=\"4dp\"\n        android:src=\"@drawable/ic_pick_color_sign\"\n        app:layout_constraintEnd_toStartOf=\"@id/btn_ready\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_arrow_left\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_arrow_left\"\n        android:layout_marginEnd=\"12dp\"\n        app:tint=\"@color/gray_dark\" />\n\n\n    <EditText\n        android:id=\"@+id/et_title\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintTop_toBottomOf=\"@id/iv_arrow_left\"\n        android:background=\"@android:color/transparent\"\n        android:textColor=\"@color/gray\"\n        android:textColorHint=\"@color/gray\"\n        android:textStyle=\"bold\"\n        android:textSize=\"26sp\"\n        android:layout_marginStart=\"20dp\"\n        android:layout_marginEnd=\"20dp\"\n        android:layout_marginTop=\"30dp\"\n        android:hint=\"Title\" />\n\n    <EditText\n        android:id=\"@+id/et_desc\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintTop_toBottomOf=\"@id/et_title\"\n        android:background=\"@android:color/transparent\"\n        android:textColor=\"@color/gray\"\n        android:textColorHint=\"@color/gray\"\n        android:textStyle=\"bold\"\n        android:layout_marginStart=\"20dp\"\n        android:layout_marginEnd=\"20dp\"\n        android:layout_marginTop=\"10dp\"\n        android:hint=\"Description\" />\n\n    <androidx.constraintlayout.widget.ConstraintLayout\n        android:layout_width=\"160dp\"\n        android:layout_height=\"140dp\"\n        android:id=\"@+id/dialog_color_picker\"\n        app:layout_constraintTop_toBottomOf=\"@id/iv_pick_color\"\n        app:layout_constraintEnd_toEndOf=\"@id/iv_pick_color\">\n\n        <ImageView\n            android:id=\"@+id/iv_color_frame\"\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"match_parent\"\n            android:src=\"@drawable/rounded_bg\"\n            app:tint=\"@color/search_gray\"/>\n\n        <View\n            android:layout_width=\"0dp\"\n            android:layout_height=\"0.5dp\"\n            android:background=\"@color/gray\"\n            android:id=\"@+id/tv_color_line\"\n            app:layout_constraintStart_toStartOf=\"@id/iv_color_frame\"\n            app:layout_constraintEnd_toEndOf=\"@id/iv_color_frame\"\n            app:layout_constraintTop_toTopOf=\"@id/iv_color_frame\"\n            android:layout_marginTop=\"34dp\"/>\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Удалить\"\n            android:textColor=\"@color/red\"\n            android:textSize=\"16dp\"\n            app:layout_constraintTop_toTopOf=\"parent\"\n            app:layout_constraintBottom_toBottomOf=\"@id/tv_color_line\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            android:layout_marginStart=\"16dp\"/>\n\n        <ImageView\n            android:layout_width=\"22dp\"\n            android:layout_height=\"22dp\"\n            android:src=\"@drawable/ic_trash_can\"\n            android:padding=\"2dp\"\n            app:layout_constraintTop_toTopOf=\"parent\"\n            app:layout_constraintBottom_toBottomOf=\"@id/tv_color_line\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            android:layout_marginEnd=\"12dp\"/>\n\n\n        <TextView\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:text=\"Поменять цвет\"\n            android:textColor=\"@color/white\"\n            android:textSize=\"16dp\"\n            app:layout_constraintTop_toTopOf=\"@id/tv_color_line\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            android:layout_marginStart=\"16dp\"\n            android:layout_marginTop=\"4dp\"/>\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            android:gravity=\"center\"\n            app:layout_constraintTop_toTopOf=\"@id/tv_color_line\"\n            android:layout_marginTop=\"30dp\">\n\n            <ImageView\n                android:id=\"@+id/v_yellow\"\n                android:layout_width=\"40dp\"\n                android:layout_height=\"30dp\"\n                android:src=\"@drawable/ic_small_rounded_bg\"\n                app:tint=\"@color/yellow_note\"/>\n\n            <ImageView\n                android:id=\"@+id/v_purple\"\n                android:layout_width=\"40dp\"\n                android:layout_height=\"30dp\"\n                android:src=\"@drawable/ic_small_rounded_bg\"\n                android:layout_marginHorizontal=\"6dp\"\n                app:tint=\"@color/purple_note\"/>\n\n            <ImageView\n                android:id=\"@+id/v_rose\"\n                android:layout_width=\"40dp\"\n                android:layout_height=\"30dp\"\n                android:src=\"@drawable/ic_small_rounded_bg\"\n                app:tint=\"@color/rose_note\"/>\n\n        </LinearLayout>\n\n        <LinearLayout\n            android:layout_width=\"match_parent\"\n            android:layout_height=\"wrap_content\"\n            app:layout_constraintStart_toStartOf=\"parent\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            android:gravity=\"center\"\n            app:layout_constraintTop_toTopOf=\"@id/tv_color_line\"\n            android:layout_marginTop=\"66dp\">\n\n            <ImageView\n                android:id=\"@+id/v_red\"\n                android:layout_width=\"40dp\"\n                android:layout_height=\"30dp\"\n                android:src=\"@drawable/ic_small_rounded_bg\"\n                app:tint=\"@color/red_note\"/>\n\n            <ImageView\n                android:id=\"@+id/v_green\"\n                android:layout_width=\"40dp\"\n                android:layout_height=\"30dp\"\n                android:src=\"@drawable/ic_small_rounded_bg\"\n                android:layout_marginHorizontal=\"6dp\"\n                app:tint=\"@color/green_note\"/>\n\n            <ImageView\n                android:id=\"@+id/v_blue\"\n                android:layout_width=\"40dp\"\n                android:layout_height=\"30dp\"\n                android:src=\"@drawable/ic_small_rounded_bg\"\n                app:tint=\"@color/blue_note\"/>\n\n        </LinearLayout>\n\n\n\n\n    </androidx.constraintlayout.widget.ConstraintLayout>\n\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_create.xml b/app/src/main/res/layout/fragment_create.xml
+--- a/app/src/main/res/layout/fragment_create.xml	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/res/layout/fragment_create.xml	(date 1758898677840)
+@@ -8,6 +8,7 @@
+     android:gravity="center"
+     android:orientation="vertical"
+     android:background="@color/bg_gray"
++    android:animateLayoutChanges="true"
+     tools:context=".ui.create.CreateFragment">
+ 
+     <ImageView
+@@ -126,6 +127,7 @@
+         <ImageView
+             android:layout_width="22dp"
+             android:layout_height="22dp"
++            android:id="@+id/btn_delete_on_create"
+             android:src="@drawable/ic_trash_can"
+             android:padding="2dp"
+             app:layout_constraintTop_toTopOf="parent"
+@@ -209,11 +211,84 @@
+                 android:src="@drawable/ic_small_rounded_bg"
+                 app:tint="@color/blue_note"/>
+ 
++        </LinearLayout>
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
++
++    <View
++        android:id="@+id/vDarkLayer"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:background="#A6000000"
++        android:clickable="true"
++        android:focusable="true"
++        android:visibility="gone" />
++
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:id="@+id/dialog_delete_note_create"
++        android:layout_width="320dp"
++        android:layout_height="130dp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <ImageView
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:src="@drawable/rounded_bg"
++            app:tint="@color/search_gray" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="16dp"
++            android:text="Удалить заметку?"
++            android:textColor="@color/white"
++            android:textSize="18sp"
++            android:textStyle="bold"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="60dp"
++            android:gravity="center_horizontal"
++            app:layout_constraintTop_toTopOf="parent">
++
++            <com.google.android.material.button.MaterialButton
++                android:id="@+id/btn_decline_create_frag_dialog"
++                android:layout_width="128dp"
++                android:layout_height="48dp"
++                android:background="@drawable/decline_rounded_bg"
++                android:text="Отмена"
++                android:textAllCaps="false"
++                android:textColor="@color/white"
++                android:textSize="16sp"
++                app:backgroundTint="@null"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <com.google.android.material.button.MaterialButton
++                android:id="@+id/btn_delete_create_frag_dialog"
++                android:layout_width="128dp"
++                android:layout_height="48dp"
++                android:layout_marginStart="22dp"
++                android:background="@drawable/accept_rounded_bg"
++                android:text="Удалить"
++                android:textAllCaps="false"
++                android:textColor="@color/white"
++                android:textSize="16sp"
++                app:backgroundTint="@null"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent"
++                app:tint="@color/orange" />
+         </LinearLayout>
+ 
+ 
+-
+-
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+ 
+Index: app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.ui.main\n\nimport android.os.Bundle\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport androidx.fragment.app.Fragment\nimport androidx.navigation.fragment.findNavController\nimport androidx.recyclerview.widget.LinearLayoutManager\nimport androidx.recyclerview.widget.StaggeredGridLayoutManager\nimport com.example.secondappkt.App\nimport com.example.secondappkt.R\nimport com.example.secondappkt.data.models.NoteModel\nimport com.example.secondappkt.databinding.FragmentMainBinding\nimport com.example.secondappkt.ui.main.adapter.NotesAdapter\n\nclass MainFragment : Fragment() {\n\n    private lateinit var binding: FragmentMainBinding\n    private val adapter = NotesAdapter(::onLongNoteClick)\n    var isLayoutChanged: Boolean = true\n\n    override fun onCreateView(\n        inflater: LayoutInflater, container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View? {\n        binding = FragmentMainBinding.inflate(inflater, container, false)\n        return binding.root\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        loadData()\n        initView()\n        setupListener()\n\n        binding.btnChangeLayout.setOnClickListener {\n            if(isLayoutChanged){\n                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)\n                isLayoutChanged = false\n                binding.btnChangeLayout.setImageResource(R.drawable.ic_linear_view)\n            } else {\n                binding.rvNotes.layoutManager = LinearLayoutManager(requireContext())\n                isLayoutChanged = true\n                binding.btnChangeLayout.setImageResource(R.drawable.ic_grid)\n            }\n        }\n    }\n\n    private fun setupListener() {\n        binding.fbCreate.setOnClickListener {\n            findNavController().navigate(R.id.createFragment)\n        }\n    }\n\n    private fun initView() {\n        binding.rvNotes.adapter = adapter\n    }\n\n    private fun loadData() {\n        val list: List<NoteModel> = App.db.dao().getAllNote()\n        adapter.addAllNotes(list)\n    }\n\n    private fun onLongNoteClick(notes: NoteModel){\n        App.db.dao().deleteNote(notes)\n        loadData()\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt b/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt
+--- a/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt	(date 1758908333935)
+@@ -1,6 +1,11 @@
+ package com.example.secondappkt.ui.main
+ 
++import android.app.DatePickerDialog
++import android.app.TimePickerDialog
++import android.icu.util.Calendar
+ import android.os.Bundle
++import android.text.Editable
++import android.text.TextWatcher
+ import android.view.LayoutInflater
+ import android.view.View
+ import android.view.ViewGroup
+@@ -14,10 +19,14 @@
+ import com.example.secondappkt.databinding.FragmentMainBinding
+ import com.example.secondappkt.ui.main.adapter.NotesAdapter
+ 
++
+ class MainFragment : Fragment() {
+ 
+     private lateinit var binding: FragmentMainBinding
+-    private val adapter = NotesAdapter(::onLongNoteClick)
++    private val adapter = NotesAdapter(::onLongNoteClick, ::onClick)
++
++    private var pickedDate: Calendar? = null
++    private var pickedTime: Pair<Int, Int>? = null
+     var isLayoutChanged: Boolean = true
+ 
+     override fun onCreateView(
+@@ -32,11 +41,81 @@
+         super.onViewCreated(view, savedInstanceState)
+         loadData()
+         initView()
+-        setupListener()
++        setupLister()
++
++        binding.btnCalendar.setOnClickListener {
++            val cal = Calendar.getInstance()
++            val datePicker = DatePickerDialog(
++                requireContext(),
++                { _, year, month, dayOfMonth ->
++                    if (pickedDate == null) pickedDate = Calendar.getInstance()
++                    pickedDate?.set(year, month, dayOfMonth, 0, 0, 0)
++                    pickedDate?.set(Calendar.MILLISECOND, 0)
++
++                    searchNotesByDate(pickedDate!!.timeInMillis, ignoreTime = true)
++                },
++                cal.get(Calendar.YEAR),
++                cal.get(Calendar.MONTH),
++                cal.get(Calendar.DAY_OF_MONTH)
++            )
++            datePicker.show()
++        }
++
++        binding.btnClock.setOnClickListener {
++            if (pickedDate == null) return@setOnClickListener
++
++            val cal = pickedDate!!
++            val timePicker = TimePickerDialog(
++                requireContext(),
++                { _, hourOfDay, minute ->
++                    pickedTime = Pair(hourOfDay, minute)
++
++                    cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
++                    cal.set(Calendar.MINUTE, minute)
++                    cal.set(Calendar.SECOND, 0)
++                    cal.set(Calendar.MILLISECOND, 0)
++
++                    searchNotesByDate(cal.timeInMillis, ignoreTime = false)
++                },
++                cal.get(Calendar.HOUR_OF_DAY),
++                cal.get(Calendar.MINUTE),
++                true
++            )
++            timePicker.show()
++        }
++
++        binding.etSearchNote.addTextChangedListener(object : TextWatcher{
++            override fun afterTextChanged(p0: Editable?) {
++            }
++            override fun beforeTextChanged(
++                p0: CharSequence?,
++                p1: Int,
++                p2: Int,
++                p3: Int
++            ) {
++            }
++
++            override fun onTextChanged(
++                p0: CharSequence?,
++                p1: Int,
++                p2: Int,
++                p3: Int
++            ) {
++                if (binding.etSearchNote.length() > 0) {
++                    binding.tvSearchNote.visibility = View.GONE
++                } else {
++                    binding.tvSearchNote.visibility = View.VISIBLE
++                }
++            }
++        })
++
++        binding.dialogDeleteNoteMain.visibility = View.GONE
++        binding.vDarkLayer.animate().alpha(0f)
+ 
+         binding.btnChangeLayout.setOnClickListener {
+-            if(isLayoutChanged){
+-                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
++            if (isLayoutChanged) {
++                binding.rvNotes.layoutManager =
++                    StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                 isLayoutChanged = false
+                 binding.btnChangeLayout.setImageResource(R.drawable.ic_linear_view)
+             } else {
+@@ -47,9 +126,10 @@
+         }
+     }
+ 
+-    private fun setupListener() {
++    private fun setupLister() {
+         binding.fbCreate.setOnClickListener {
+-            findNavController().navigate(R.id.createFragment)
++            val action = MainFragmentDirections.actionMainFragmentToCreateFragment(null)
++            findNavController().navigate(action)
+         }
+     }
+ 
+@@ -62,8 +142,49 @@
+         adapter.addAllNotes(list)
+     }
+ 
+-    private fun onLongNoteClick(notes: NoteModel){
+-        App.db.dao().deleteNote(notes)
+-        loadData()
++    private fun onLongNoteClick(notes: NoteModel) {
++        binding.dialogDeleteNoteMain.visibility = View.VISIBLE
++        binding.vDarkLayer.visibility = View.VISIBLE
++        binding.btnDeleteMainFragDialog.setOnClickListener {
++            App.db.dao().deleteNote(notes)
++            binding.dialogDeleteNoteMain.visibility = View.GONE
++            binding.vDarkLayer.visibility = View.GONE
++            loadData()
++        }
++        binding.btnDeclineMainFragDialog.setOnClickListener {
++            binding.dialogDeleteNoteMain.visibility = View.GONE
++            binding.vDarkLayer.visibility = View.GONE
++            loadData()
++        }
+     }
++
++    private fun onClick(notes: NoteModel) {
++        val action = MainFragmentDirections.actionMainFragmentToCreateFragment(notes)
++        findNavController().navigate(action)
++    }
++
++    private fun searchNotesByDate(pickedTime: Long, ignoreTime: Boolean) {
++        val filteredList = App.db.dao().getAllNote().filter { note ->
++            if (ignoreTime) {
++                val calNote = Calendar.getInstance().apply { timeInMillis = note.dateCreated }
++                val calPick = Calendar.getInstance().apply { timeInMillis = pickedTime }
++                calNote.get(Calendar.YEAR) == calPick.get(Calendar.YEAR) &&
++                        calNote.get(Calendar.MONTH) == calPick.get(Calendar.MONTH) &&
++                        calNote.get(Calendar.DAY_OF_MONTH) == calPick.get(Calendar.DAY_OF_MONTH)
++            } else {
++                val startCal = Calendar.getInstance().apply { timeInMillis = pickedTime }
++                startCal.set(Calendar.SECOND, 0)
++                startCal.set(Calendar.MILLISECOND, 0)
++                val startTime = startCal.timeInMillis
++
++                startCal.set(Calendar.SECOND, 59)
++                startCal.set(Calendar.MILLISECOND, 999)
++                val endTime = startCal.timeInMillis
++
++                note.dateCreated in startTime..endTime
++            }
++        }
++        adapter.addAllNotes(filteredList)
++    }
++
+ }
+Index: app/src/main/res/navigation/nav_host.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/nav_host\"\n    app:startDestination=\"@id/onBoardFragment\">\n\n    <fragment\n        android:id=\"@+id/mainFragment\"\n        android:name=\"com.example.secondappkt.ui.main.MainFragment\"\n        android:label=\"fragment_main\"\n        tools:layout=\"@layout/fragment_main\" >\n<!--        <action-->\n<!--            android:id=\"@+id/action_mainFragment_to_detailCarFragment\"-->\n<!--            app:destination=\"@id/detailCarFragment\" />-->\n    </fragment>\n\n<!--    <fragment-->\n<!--        android:id=\"@+id/detailCarFragment\"-->\n<!--        android:name=\"com.example.secondappkt.ui.detail.DetailCarFragment\"-->\n<!--        android:label=\"fragment_detial_car\"-->\n<!--        tools:layout=\"@layout/fragment_detial_car\">-->\n\n<!--        <argument-->\n<!--            android:name=\"carModel\"-->\n<!--            app:argType=\"com.example.secondappkt.data.models.CarModel\"-->\n<!--            app:nullable=\"false\" />-->\n<!--    </fragment>-->\n    <fragment\n        android:id=\"@+id/onBoardFragment\"\n        android:name=\"com.example.secondappkt.ui.on_board.OnBoardFragment\"\n        android:label=\"fragment_on_board\"\n        tools:layout=\"@layout/fragment_on_board\">\n        <action\n            android:id=\"@+id/action_onBoardFragment_to_mainFragment\"\n            app:destination=\"@id/mainFragment\"\n            app:popUpTo=\"@id/onBoardFragment\"\n            app:popUpToInclusive=\"true\"/>\n    </fragment>\n    <fragment\n        android:id=\"@+id/createFragment\"\n        android:name=\"com.example.secondappkt.ui.create.CreateFragment\"\n        android:label=\"fragment_create\"\n        tools:layout=\"@layout/fragment_create\" />\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/nav_host.xml b/app/src/main/res/navigation/nav_host.xml
+--- a/app/src/main/res/navigation/nav_host.xml	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/res/navigation/nav_host.xml	(date 1758889083846)
+@@ -13,6 +13,14 @@
+ <!--        <action-->
+ <!--            android:id="@+id/action_mainFragment_to_detailCarFragment"-->
+ <!--            app:destination="@id/detailCarFragment" />-->
++        <action
++            android:id="@+id/action_mainFragment_to_createFragment"
++            app:destination="@id/createFragment">
++            <argument
++                android:name="note"
++                app:nullable="true"
++                app:argType="com.example.secondappkt.data.models.NoteModel"/>
++        </action>
+     </fragment>
+ 
+ <!--    <fragment-->
+@@ -41,5 +49,11 @@
+         android:id="@+id/createFragment"
+         android:name="com.example.secondappkt.ui.create.CreateFragment"
+         android:label="fragment_create"
+-        tools:layout="@layout/fragment_create" />
++        tools:layout="@layout/fragment_create">
++        <argument
++            android:name="note"
++            app:nullable="true"
++            app:argType="com.example.secondappkt.data.models.NoteModel"/>
++    </fragment>
++
+ </navigation>
+\ No newline at end of file
+Index: app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.data.models\n\nimport androidx.room.Entity\nimport androidx.room.PrimaryKey\n\n@Entity( tableName = \"note_list\")\ndata class NoteModel(\n    @PrimaryKey(autoGenerate = true)\n    val id: Int? = null,\n    val title: String,\n    val desc: String,\n    val color: Int,\n    val dateCreated: Long = System.currentTimeMillis()\n)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt b/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt
+--- a/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt	(date 1758888394842)
+@@ -3,7 +3,7 @@
+ import androidx.room.Entity
+ import androidx.room.PrimaryKey
+ 
+-@Entity( tableName = "note_list")
++@Entity(tableName = "note_list")
+ data class NoteModel(
+     @PrimaryKey(autoGenerate = true)
+     val id: Int? = null,
+@@ -11,4 +11,4 @@
+     val desc: String,
+     val color: Int,
+     val dateCreated: Long = System.currentTimeMillis()
+-)
++) : java.io.Serializable
+Index: app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.ui.main.adapter\n\nimport android.view.LayoutInflater\nimport android.view.ViewGroup\nimport androidx.recyclerview.widget.RecyclerView\nimport com.example.secondappkt.data.models.NoteModel\nimport com.example.secondappkt.databinding.ItemNoteBinding\n\nclass NotesAdapter(val onLongClick:(NoteModel)-> Unit) :\n    RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {\n\n    private val notesList = arrayListOf<NoteModel>()\n\n    fun addAllNotes(list: List<NoteModel>){\n        notesList.clear()\n        notesList.addAll(list)\n        notifyDataSetChanged()\n    }\n\n\n    override fun onCreateViewHolder(\n        parent: ViewGroup,\n        viewType: Int\n    ): NotesViewHolder {\n        return NotesViewHolder(\n            ItemNoteBinding.inflate(\n                LayoutInflater.from(parent.context),\n                parent,\n                false\n            )\n        )\n    }\n\n    override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {\n        holder.bind(notesList[position])\n    }\n\n    override fun getItemCount() = notesList.size\n\n    inner class NotesViewHolder(private val binding: ItemNoteBinding) :\n        RecyclerView.ViewHolder(binding.root) {\n        fun bind(noteModel: NoteModel) = with(binding) {\n            tvTitle.text = noteModel.title\n            tvDesc.text = noteModel.desc\n            ivNoteBg.setColorFilter(noteModel.color)\n\n            val formatter = java.text.SimpleDateFormat(\"dd MMM HH:mm\", java.util.Locale.getDefault())\n            tvDate.text = formatter.format(java.util.Date(noteModel.dateCreated))\n\n            itemView.setOnLongClickListener {\n                onLongClick(noteModel)\n                false\n            }\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt b/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt
+--- a/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt	(date 1758898492695)
+@@ -6,7 +6,7 @@
+ import com.example.secondappkt.data.models.NoteModel
+ import com.example.secondappkt.databinding.ItemNoteBinding
+ 
+-class NotesAdapter(val onLongClick:(NoteModel)-> Unit) :
++class NotesAdapter(val onLongClick:(NoteModel)-> Unit, val onClick: (NoteModel) -> Unit) :
+     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+ 
+     private val notesList = arrayListOf<NoteModel>()
+@@ -49,7 +49,11 @@
+ 
+             itemView.setOnLongClickListener {
+                 onLongClick(noteModel)
+-                false
++                true
++            }
++
++            itemView.setOnClickListener {
++                onClick(noteModel)
+             }
+         }
+     }
+Index: app/src/main/res/layout/fragment_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:background=\"@color/bg_gray\"\n    tools:context=\".ui.main.MainFragment\">\n\n    <TextView\n        android:id=\"@+id/tvAllNotes\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"14dp\"\n        android:text=\"Все заметки\"\n        android:textColor=\"@color/white\"\n        android:textSize=\"18sp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <ImageView\n        android:layout_width=\"20dp\"\n        android:layout_height=\"20dp\"\n        android:src=\"@drawable/ic_menu\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"@id/tvAllNotes\"\n        app:layout_constraintBottom_toBottomOf=\"@id/tvAllNotes\"\n        android:layout_marginStart=\"18dp\" />\n\n    <ImageView\n        android:id=\"@+id/btn_change_layout\"\n        android:layout_width=\"20dp\"\n        android:layout_height=\"20dp\"\n        android:src=\"@drawable/ic_grid\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"@id/tvAllNotes\"\n        app:layout_constraintBottom_toBottomOf=\"@id/tvAllNotes\"\n        android:layout_marginEnd=\"18dp\" />\n\n    <ImageView\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"54dp\"\n        android:id=\"@+id/iv_search_note\"\n        android:src=\"@drawable/rounded_bg\"\n        android:layout_marginHorizontal=\"16dp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/tvAllNotes\"\n        android:layout_marginTop=\"30dp\"\n        app:tint=\"@color/search_gray\"/>\n    \n    <ImageView\n        android:layout_width=\"22dp\"\n        android:layout_height=\"22dp\"\n        android:id=\"@+id/iv_search_sign\"\n        android:src=\"@drawable/ic_search_sign\"\n        android:layout_marginStart=\"18dp\"\n        app:layout_constraintStart_toStartOf=\"@id/iv_search_note\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_search_note\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_search_note\"/>\n\n    <EditText\n        android:layout_width=\"0dp\"\n        android:layout_height=\"0dp\"\n        android:id=\"@+id/et_search_note\"\n        android:layout_marginStart=\"48dp\"\n        android:textColor=\"@color/white\"\n        android:textSize=\"20dp\"\n        android:background=\"@android:color/transparent\"\n        app:layout_constraintStart_toStartOf=\"@id/iv_search_note\"\n        app:layout_constraintEnd_toEndOf=\"@id/iv_search_note\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_search_note\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_search_note\"/>\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:id=\"@+id/tv_search_note\"\n        android:text=\"Поиск заметок\"\n        android:textSize=\"18sp\"\n        android:textColor=\"@color/gray\"\n        android:layout_marginStart=\"10dp\"\n        app:layout_constraintStart_toEndOf=\"@id/iv_search_sign\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_search_note\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_search_note\"/>\n\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/rv_notes\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"0dp\"\n        android:clipToPadding=\"false\"\n        android:layout_marginTop=\"12dp\"\n        android:layout_marginEnd=\"12dp\"\n        app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/iv_search_note\"\n        app:layout_constraintVertical_bias=\"0.0\"\n        tools:layout_editor_absoluteX=\"6dp\"\n        tools:listitem=\"@layout/item_note\" />\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:layout_width=\"wrap_content\"\n        android:id=\"@+id/fb_create\"\n        android:backgroundTint=\"@color/orange\"\n        app:srcCompat=\"@drawable/ic_plus\"\n        app:tint=\"@color/white\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"16dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\" />\n\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_main.xml b/app/src/main/res/layout/fragment_main.xml
+--- a/app/src/main/res/layout/fragment_main.xml	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/res/layout/fragment_main.xml	(date 1758907725983)
+@@ -4,6 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:animateLayoutChanges="true"
+     android:background="@color/bg_gray"
+     tools:context=".ui.main.MainFragment">
+ 
+@@ -23,77 +24,99 @@
+     <ImageView
+         android:layout_width="20dp"
+         android:layout_height="20dp"
++        android:layout_marginStart="18dp"
+         android:src="@drawable/ic_menu"
++        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="@id/tvAllNotes"
+-        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
+-        android:layout_marginStart="18dp" />
++        app:layout_constraintTop_toTopOf="@id/tvAllNotes" />
+ 
+     <ImageView
+         android:id="@+id/btn_change_layout"
+         android:layout_width="20dp"
+         android:layout_height="20dp"
++        android:layout_marginEnd="18dp"
+         android:src="@drawable/ic_grid"
++        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="@id/tvAllNotes"/>
++
++    <ImageView
++        android:id="@+id/btn_calendar"
++        android:layout_width="26dp"
++        android:layout_height="26dp"
++        android:layout_marginEnd="44dp"
++        android:src="@drawable/ic_calendar"
++        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintTop_toTopOf="@id/tvAllNotes"
++        app:tint="@color/light_gray" />
++
++    <ImageView
++        android:id="@+id/btn_clock"
++        android:layout_width="24dp"
++        android:layout_height="24dp"
++        android:layout_marginEnd="80dp"
++        android:src="@drawable/ic_clock"
+         app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
+-        android:layout_marginEnd="18dp" />
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="@id/tvAllNotes"
++        app:tint="@color/light_gray" />
+ 
+     <ImageView
++        android:id="@+id/iv_search_note"
+         android:layout_width="match_parent"
+         android:layout_height="54dp"
+-        android:id="@+id/iv_search_note"
+-        android:src="@drawable/rounded_bg"
+         android:layout_marginHorizontal="16dp"
+-        app:layout_constraintStart_toStartOf="parent"
++        android:layout_marginTop="30dp"
++        android:src="@drawable/rounded_bg"
+         app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/tvAllNotes"
+-        android:layout_marginTop="30dp"
+-        app:tint="@color/search_gray"/>
+-    
++        app:tint="@color/search_gray" />
++
+     <ImageView
++        android:id="@+id/iv_search_sign"
+         android:layout_width="22dp"
+         android:layout_height="22dp"
+-        android:id="@+id/iv_search_sign"
++        android:layout_marginStart="18dp"
+         android:src="@drawable/ic_search_sign"
+-        android:layout_marginStart="18dp"
++        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"
+         app:layout_constraintStart_toStartOf="@id/iv_search_note"
+-        app:layout_constraintTop_toTopOf="@id/iv_search_note"
+-        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"/>
++        app:layout_constraintTop_toTopOf="@id/iv_search_note" />
+ 
+     <EditText
++        android:id="@+id/et_search_note"
+         android:layout_width="0dp"
+         android:layout_height="0dp"
+-        android:id="@+id/et_search_note"
+-        android:layout_marginStart="48dp"
++        android:layout_marginStart="11dp"
++        android:background="@android:color/transparent"
+         android:textColor="@color/white"
+         android:textSize="20dp"
+-        android:background="@android:color/transparent"
+-        app:layout_constraintStart_toStartOf="@id/iv_search_note"
++        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"
+         app:layout_constraintEnd_toEndOf="@id/iv_search_note"
+-        app:layout_constraintTop_toTopOf="@id/iv_search_note"
+-        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"/>
++        app:layout_constraintStart_toEndOf="@id/iv_search_sign"
++        app:layout_constraintTop_toTopOf="@id/iv_search_note" />
+ 
+     <TextView
++        android:id="@+id/tv_search_note"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+-        android:id="@+id/tv_search_note"
++        android:layout_marginStart="10dp"
+         android:text="Поиск заметок"
+-        android:textSize="18sp"
+         android:textColor="@color/gray"
+-        android:layout_marginStart="10dp"
++        android:textSize="18sp"
++        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"
+         app:layout_constraintStart_toEndOf="@id/iv_search_sign"
+-        app:layout_constraintTop_toTopOf="@id/iv_search_note"
+-        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"/>
++        app:layout_constraintTop_toTopOf="@id/iv_search_note" />
+ 
+ 
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/rv_notes"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+-        android:clipToPadding="false"
+         android:layout_marginTop="12dp"
+         android:layout_marginEnd="12dp"
++        android:clipToPadding="false"
+         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/iv_search_note"
+@@ -102,15 +125,90 @@
+         tools:listitem="@layout/item_note" />
+ 
+     <com.google.android.material.floatingactionbutton.FloatingActionButton
++        android:id="@+id/fb_create"
+         android:layout_width="wrap_content"
+-        android:id="@+id/fb_create"
++        android:layout_height="wrap_content"
++        android:layout_margin="16dp"
+         android:backgroundTint="@color/orange"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
+         app:srcCompat="@drawable/ic_plus"
+-        app:tint="@color/white"
+-        android:layout_height="wrap_content"
+-        android:layout_margin="16dp"
++        app:tint="@color/white" />
++
++    <View
++        android:id="@+id/vDarkLayer"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        android:background="#A6000000"
++        android:clickable="true"
++        android:focusable="true"
++        android:visibility="gone" />
++
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:id="@+id/dialog_delete_note_main"
++        android:layout_width="320dp"
++        android:layout_height="130dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent" />
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent">
++
++        <ImageView
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:src="@drawable/rounded_bg"
++            app:tint="@color/search_gray" />
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="16dp"
++            android:text="Удалить заметку?"
++            android:textColor="@color/white"
++            android:textSize="18sp"
++            android:textStyle="bold"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="60dp"
++            android:gravity="center_horizontal"
++            app:layout_constraintTop_toTopOf="parent">
++
++            <com.google.android.material.button.MaterialButton
++                android:id="@+id/btn_decline_main_frag_dialog"
++                android:layout_width="128dp"
++                android:layout_height="48dp"
++                android:background="@drawable/decline_rounded_bg"
++                android:text="Отмена"
++                android:textAllCaps="false"
++                android:textColor="@color/white"
++                android:textSize="16sp"
++                app:backgroundTint="@null"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent" />
++
++            <com.google.android.material.button.MaterialButton
++                android:id="@+id/btn_delete_main_frag_dialog"
++                android:layout_width="128dp"
++                android:layout_height="48dp"
++                android:layout_marginStart="22dp"
++                android:background="@drawable/accept_rounded_bg"
++                android:text="Удалить"
++                android:textAllCaps="false"
++                android:textColor="@color/white"
++                android:textSize="16sp"
++                app:backgroundTint="@null"
++                app:layout_constraintEnd_toEndOf="parent"
++                app:layout_constraintTop_toTopOf="parent"
++                app:tint="@color/orange" />
++        </LinearLayout>
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
+ 
+ 
+ 
+Index: app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.ui.create\n\nimport android.os.Bundle\nimport android.text.Editable\nimport android.text.TextWatcher\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport androidx.core.content.ContextCompat\nimport androidx.fragment.app.Fragment\nimport androidx.navigation.fragment.findNavController\nimport com.example.secondappkt.App\nimport com.example.secondappkt.R\nimport com.example.secondappkt.data.models.NoteModel\nimport com.example.secondappkt.databinding.FragmentCreateBinding\n\nclass CreateFragment : Fragment() {\n\n    private lateinit var binding: FragmentCreateBinding\n\n    override fun onCreateView(\n        inflater: LayoutInflater, container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View? {\n        binding = FragmentCreateBinding.inflate(inflater, container, false)\n        return binding.root\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n\n        val formatter = java.text.SimpleDateFormat(\"dd MMM HH:mm\", java.util.Locale.getDefault())\n        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))\n\n        var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)\n        binding.btnReady.setOnClickListener {\n            val title = binding.etTitle.text.toString()\n            val desc = binding.etDesc.text.toString()\n            App.db.dao().addNote(NoteModel(title = title, desc = desc, color = color))\n            findNavController().navigateUp()\n        }\n\n\n        binding.etTitle.addTextChangedListener(object : TextWatcher{\n            override fun afterTextChanged(p0: Editable?) {\n            }\n            override fun beforeTextChanged(\n                p0: CharSequence?,\n                p1: Int,\n                p2: Int,\n                p3: Int\n            ) {}\n\n            override fun onTextChanged(\n                p0: CharSequence?,\n                p1: Int,\n                p2: Int,\n                p3: Int\n            ) {\n                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0){\n                    binding.btnReady.visibility = View.VISIBLE\n                } else {\n                    binding.btnReady.visibility = View.GONE\n                }\n            }\n        })\n\n\n        val orange = ContextCompat.getColor(requireContext(), R.color.orange)\n        val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)\n        var pickColorPressed = true\n        binding.dialogColorPicker.visibility = View.GONE\n        binding.btnReady.visibility = View.GONE\n        binding.ivPickColor.setOnClickListener {\n            if(pickColorPressed){\n                binding.ivPickColor.setColorFilter(orange)\n                binding.dialogColorPicker.visibility = View.VISIBLE\n                pickColorPressed = false\n            } else {\n                binding.ivPickColor.setColorFilter(grayDark)\n                binding.dialogColorPicker.visibility = View.GONE\n                pickColorPressed = true\n            }\n        }\n\n\n        val yellow = ContextCompat.getColor(requireContext(), R.color.yellow_note)\n        val purple = ContextCompat.getColor(requireContext(), R.color.purple_note)\n        val rose = ContextCompat.getColor(requireContext(), R.color.rose_note)\n        val red = ContextCompat.getColor(requireContext(), R.color.red_note)\n        val green = ContextCompat.getColor(requireContext(), R.color.green_note)\n        val blue = ContextCompat.getColor(requireContext(), R.color.blue_note)\n        binding.vYellow.setOnClickListener {\n            color = yellow\n        }\n        binding.vPurple.setOnClickListener {\n            color = purple\n        }\n        binding.vRose.setOnClickListener {\n            color = rose\n        }\n        binding.vRed.setOnClickListener {\n            color = red\n        }\n        binding.vGreen.setOnClickListener {\n            color = green\n        }\n        binding.vBlue.setOnClickListener {\n            color = blue\n        }\n\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt b/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt
+--- a/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt	(date 1758908435898)
+@@ -9,6 +9,7 @@
+ import androidx.core.content.ContextCompat
+ import androidx.fragment.app.Fragment
+ import androidx.navigation.fragment.findNavController
++import androidx.navigation.fragment.navArgs
+ import com.example.secondappkt.App
+ import com.example.secondappkt.R
+ import com.example.secondappkt.data.models.NoteModel
+@@ -17,6 +18,8 @@
+ class CreateFragment : Fragment() {
+ 
+     private lateinit var binding: FragmentCreateBinding
++    val args: CreateFragmentArgs by navArgs()
++
+ 
+     override fun onCreateView(
+         inflater: LayoutInflater, container: ViewGroup?,
+@@ -28,28 +31,58 @@
+ 
+     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+         super.onViewCreated(view, savedInstanceState)
++        val note = args.note
+ 
+         val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
+         binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
+ 
+         var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
++
++        if (note != null) {
++            binding.etTitle.setText(note.title)
++            binding.etDesc.setText(note.desc)
++            color = note.color
++            binding.tvOnCreateDate.text = formatter.format(java.util.Date(note.dateCreated))
++        }
++
+         binding.btnReady.setOnClickListener {
+             val title = binding.etTitle.text.toString()
+             val desc = binding.etDesc.text.toString()
+-            App.db.dao().addNote(NoteModel(title = title, desc = desc, color = color))
++            if (note != null) {
++                App.db.dao().updateNote(
++                    NoteModel(
++                        title = title,
++                        desc = desc,
++                        color = color,
++                        id = note.id,
++                        dateCreated = note.dateCreated
++                    )
++                )
++            } else {
++                App.db.dao().addNote(
++                    NoteModel(
++                        title = title,
++                        desc = desc,
++                        color = color,
++                        dateCreated = System.currentTimeMillis()
++                    )
++                )
++            }
+             findNavController().navigateUp()
+         }
+ 
+ 
+-        binding.etTitle.addTextChangedListener(object : TextWatcher{
++        binding.etTitle.addTextChangedListener(object : TextWatcher {
+             override fun afterTextChanged(p0: Editable?) {
+             }
++
+             override fun beforeTextChanged(
+                 p0: CharSequence?,
+                 p1: Int,
+                 p2: Int,
+                 p3: Int
+-            ) {}
++            ) {
++            }
+ 
+             override fun onTextChanged(
+                 p0: CharSequence?,
+@@ -57,7 +90,7 @@
+                 p2: Int,
+                 p3: Int
+             ) {
+-                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0){
++                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0) {
+                     binding.btnReady.visibility = View.VISIBLE
+                 } else {
+                     binding.btnReady.visibility = View.GONE
+@@ -72,7 +105,7 @@
+         binding.dialogColorPicker.visibility = View.GONE
+         binding.btnReady.visibility = View.GONE
+         binding.ivPickColor.setOnClickListener {
+-            if(pickColorPressed){
++            if (pickColorPressed) {
+                 binding.ivPickColor.setColorFilter(orange)
+                 binding.dialogColorPicker.visibility = View.VISIBLE
+                 pickColorPressed = false
+@@ -109,5 +142,28 @@
+             color = blue
+         }
+ 
++
++        binding.dialogDeleteNoteCreate.visibility = View.GONE
++        binding.btnDeleteOnCreate.setOnClickListener {
++            val note = args.note
++            binding.dialogDeleteNoteCreate.visibility = View.VISIBLE
++            binding.vDarkLayer.visibility = View.VISIBLE
++            binding.btnDeleteCreateFragDialog.setOnClickListener {
++                if (note != null) {
++                    App.db.dao().deleteNote(note)
++                    findNavController().navigateUp()
++                } else {
++                    findNavController().navigateUp()
++                }
++                binding.dialogDeleteNoteCreate.visibility = View.GONE
++                binding.vDarkLayer.visibility = View.GONE
++            }
++            binding.btnDeclineCreateFragDialog.setOnClickListener {
++                binding.dialogDeleteNoteCreate.visibility = View.GONE
++                binding.vDarkLayer.visibility = View.GONE
++
++            }
++        }
++
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.data.local.room\n\nimport androidx.room.Dao\nimport androidx.room.Delete\nimport androidx.room.Insert\nimport androidx.room.Query\nimport com.example.secondappkt.data.models.NoteModel\n\n@Dao\ninterface NoteDao {\n    @Query (\"SELECT * FROM note_list ORDER BY id DESC\")\n    fun getAllNote(): List<NoteModel>\n\n    @Insert\n    fun addNote(noteModel: NoteModel)\n\n    @Delete\n    fun deleteNote(noteModel: NoteModel)\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt b/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt
+--- a/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt	(date 1758887705276)
+@@ -4,6 +4,7 @@
+ import androidx.room.Delete
+ import androidx.room.Insert
+ import androidx.room.Query
++import androidx.room.Update
+ import com.example.secondappkt.data.models.NoteModel
+ 
+ @Dao
+@@ -16,4 +17,7 @@
+ 
+     @Delete
+     fun deleteNote(noteModel: NoteModel)
++
++    @Update
++    fun updateNote(noteModel: NoteModel)
+ }
+\ No newline at end of file
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    alias(libs.plugins.android.application) apply false\n    alias(libs.plugins.kotlin.android) apply false\n    alias(libs.plugins.kotlin.kapt) apply false\n    id(\"com.google.gms.google-services\") version \"4.4.3\" apply false\n    id(\"com.google.devtools.ksp\") version \"2.2.10-2.0.2\" apply false\n    id(\"androidx.navigation.safeargs.kotlin\") version \"2.9.3\" apply false\n}\n\nbuildscript {\n    repositories {\n        google()\n        mavenCentral()\n    }\n    dependencies {\n        val nav_version = \"2.9.3\"\n        classpath(\"androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version\")\n        classpath(\"com.android.tools.build:gradle:8.9.1\")\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/build.gradle.kts	(date 1758887885596)
+@@ -4,7 +4,7 @@
+     alias(libs.plugins.kotlin.kapt) apply false
+     id("com.google.gms.google-services") version "4.4.3" apply false
+     id("com.google.devtools.ksp") version "2.2.10-2.0.2" apply false
+-    id("androidx.navigation.safeargs.kotlin") version "2.9.3" apply false
++    id("androidx.navigation.safeargs.kotlin") version "2.9.5" apply false
+ }
+ 
+ buildscript {
+Index: app/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\n    <!-- Base application theme. -->\n    <style name=\"Base.Theme.SecondAppKt\" parent=\"Theme.Material3.DayNight.NoActionBar\">\n        <!-- Customize your dark theme here. -->\n        <!-- <item name=\"colorPrimary\">@color/my_dark_primary</item> -->\n    </style>\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-night/themes.xml b/app/src/main/res/values-night/themes.xml
+--- a/app/src/main/res/values-night/themes.xml	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/res/values-night/themes.xml	(date 1758897205523)
+@@ -1,6 +1,6 @@
+ <resources xmlns:tools="http://schemas.android.com/tools">
+     <!-- Base application theme. -->
+-    <style name="Base.Theme.SecondAppKt" parent="Theme.Material3.DayNight.NoActionBar">
++    <style name="Base.Theme.SecondAppKt" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+         <!-- Customize your dark theme here. -->
+         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+     </style>
+Index: app/src/main/res/drawable/decline_rounded_bg.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/decline_rounded_bg.xml b/app/src/main/res/drawable/decline_rounded_bg.xml
+new file mode 100644
+--- /dev/null	(date 1758894257708)
++++ b/app/src/main/res/drawable/decline_rounded_bg.xml	(date 1758894257708)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <corners android:radius="12dp"/>
++    <solid android:color="@color/search_gray"/>
++    <stroke android:width="0.6dp" android:color="@color/white"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\n    <!-- Base application theme. -->\n    <style name=\"Base.Theme.SecondAppKt\" parent=\"Theme.MaterialComponents.DayNight.Bridge\">\n        <!-- Customize your light theme here. -->\n        <!-- <item name=\"colorPrimary\">@color/my_light_primary</item> -->\n    </style>\n\n    <style name=\"Theme.SecondAppKt\" parent=\"Base.Theme.SecondAppKt\" />\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+--- a/app/src/main/res/values/themes.xml	(revision 53f7467e1373d6dab71299f569b4283f4de7fd9f)
++++ b/app/src/main/res/values/themes.xml	(date 1758897205527)
+@@ -1,6 +1,6 @@
+ <resources xmlns:tools="http://schemas.android.com/tools">
+     <!-- Base application theme. -->
+-    <style name="Base.Theme.SecondAppKt" parent="Theme.MaterialComponents.DayNight.Bridge">
++    <style name="Base.Theme.SecondAppKt" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+         <!-- Customize your light theme here. -->
+         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+     </style>
+Index: app/src/main/res/drawable/accept_rounded_bg.xml
+===================================================================
+diff --git a/app/src/main/res/drawable/accept_rounded_bg.xml b/app/src/main/res/drawable/accept_rounded_bg.xml
+new file mode 100644
+--- /dev/null	(date 1758893950976)
++++ b/app/src/main/res/drawable/accept_rounded_bg.xml	(date 1758893950976)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <corners android:radius="12dp"/>
++    <solid android:color="@color/orange"/>
++</shape>
+\ No newline at end of file

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "101744388907",
+    "project_id": "vidadi-d6300",
+    "storage_bucket": "vidadi-d6300.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101744388907:android:e2c7b5787541c87b14f36e",
+        "android_client_info": {
+          "package_name": "com.example.secondappkt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101744388907-ku54r00bq3i9akg48qd0iqcrlvg82ge6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.secondappkt",
+            "certificate_hash": "34cbc6cb37f3a0356b85a2a4e4d56ad1118d0b6d"
+          }
+        },
+        {
+          "client_id": "101744388907-3qrio4jv66rv4chsv2sesnc2afe8lde2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-AB-g-eUAFnUvmjFu2AaOJ2hJrh8T-iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101744388907-3qrio4jv66rv4chsv2sesnc2afe8lde2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

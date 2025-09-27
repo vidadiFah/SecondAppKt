@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.secondappkt.data.models.NoteModel
 import com.example.secondappkt.databinding.ItemNoteBinding
+import com.example.secondappkt.utils.formatDate
 
 class NotesAdapter(val onLongClick:(NoteModel)-> Unit, val onClick:(NoteModel) -> Unit) :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
@@ -44,8 +45,7 @@ class NotesAdapter(val onLongClick:(NoteModel)-> Unit, val onClick:(NoteModel) -
             tvDesc.text = noteModel.desc
             ivNoteBg.setColorFilter(noteModel.color)
 
-            val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
-            tvDate.text = formatter.format(java.util.Date(noteModel.dateCreated))
+            tvDate.formatDate(noteModel.dateCreated)
 
             itemView.setOnLongClickListener {
                 onLongClick(noteModel)

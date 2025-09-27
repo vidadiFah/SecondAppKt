@@ -1,0 +1,528 @@
+Index: app/src/main/res/layout/fragment_create.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    android:layout_gravity=\"center\"\n    android:gravity=\"center\"\n    android:orientation=\"vertical\"\n    android:background=\"@color/bg_gray\"\n    tools:context=\".ui.create.CreateFragment\">\n\n    <ImageView\n        android:id=\"@+id/iv_arrow_left\"\n        android:layout_width=\"20dp\"\n        android:layout_height=\"20dp\"\n        android:src=\"@drawable/ic_arrow_left\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        android:layout_marginTop=\"26dp\"\n        android:layout_marginStart=\"16dp\"/>\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:id=\"@+id/tv_on_create_date\"\n        android:text=\"31 May 10:40\"\n        android:textStyle=\"bold\"\n        android:textSize=\"18sp\"\n        android:textColor=\"@color/light_gray\"\n        app:layout_constraintStart_toEndOf=\"@id/iv_arrow_left\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_arrow_left\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_arrow_left\"\n        android:layout_marginStart=\"16dp\"/>\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"Готово\"\n        android:id=\"@+id/btn_ready\"\n        android:textColor=\"@color/orange\"\n        android:textStyle=\"bold\"\n        android:textSize=\"18sp\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_arrow_left\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_arrow_left\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        android:layout_marginEnd=\"20dp\"/>\n\n    <ImageView\n        android:layout_width=\"30dp\"\n        android:layout_height=\"30dp\"\n        android:id=\"@+id/iv_pick_color\"\n        android:padding=\"4dp\"\n        android:src=\"@drawable/ic_pick_color_sign\"\n        app:layout_constraintEnd_toStartOf=\"@id/btn_ready\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_arrow_left\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_arrow_left\"\n        android:layout_marginEnd=\"12dp\"\n        app:tint=\"@color/gray_dark\" />\n\n\n    <EditText\n        android:id=\"@+id/et_title\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintTop_toBottomOf=\"@id/iv_arrow_left\"\n        android:background=\"@android:color/transparent\"\n        android:textColor=\"@color/gray\"\n        android:textColorHint=\"@color/gray\"\n        android:textStyle=\"bold\"\n        android:textSize=\"26sp\"\n        android:layout_marginStart=\"20dp\"\n        android:layout_marginEnd=\"20dp\"\n        android:layout_marginTop=\"30dp\"\n        android:hint=\"Title\" />\n\n    <EditText\n        android:id=\"@+id/et_desc\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintTop_toBottomOf=\"@id/et_title\"\n        android:background=\"@android:color/transparent\"\n        android:textColor=\"@color/gray\"\n        android:textColorHint=\"@color/gray\"\n        android:textStyle=\"bold\"\n        android:layout_marginStart=\"20dp\"\n        android:layout_marginEnd=\"20dp\"\n        android:layout_marginTop=\"10dp\"\n        android:hint=\"Description\" />\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_create.xml b/app/src/main/res/layout/fragment_create.xml
+--- a/app/src/main/res/layout/fragment_create.xml	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/res/layout/fragment_create.xml	(date 1758910856769)
+@@ -27,7 +27,7 @@
+         android:text="31 May 10:40"
+         android:textStyle="bold"
+         android:textSize="18sp"
+-        android:textColor="@color/light_gray"
++        android:textColor="@color/gray_dark"
+         app:layout_constraintStart_toEndOf="@id/iv_arrow_left"
+         app:layout_constraintTop_toTopOf="@id/iv_arrow_left"
+         app:layout_constraintBottom_toBottomOf="@id/iv_arrow_left"
+@@ -88,5 +88,134 @@
+         android:layout_marginTop="10dp"
+         android:hint="Description" />
+ 
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="160dp"
++        android:layout_height="140dp"
++        android:id="@+id/dialog_color_picker"
++        app:layout_constraintTop_toBottomOf="@id/iv_pick_color"
++        app:layout_constraintEnd_toEndOf="@id/iv_pick_color">
++
++        <ImageView
++            android:id="@+id/iv_color_frame"
++            android:layout_width="match_parent"
++            android:layout_height="match_parent"
++            android:src="@drawable/rounded_bg"
++            app:tint="@color/search_gray"/>
++
++        <View
++            android:layout_width="0dp"
++            android:layout_height="0.5dp"
++            android:background="@color/gray"
++            android:id="@+id/tv_color_line"
++            app:layout_constraintStart_toStartOf="@id/iv_color_frame"
++            app:layout_constraintEnd_toEndOf="@id/iv_color_frame"
++            app:layout_constraintTop_toTopOf="@id/iv_color_frame"
++            android:layout_marginTop="34dp"/>
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Удалить"
++            android:textColor="@color/red"
++            android:textSize="16dp"
++            app:layout_constraintTop_toTopOf="parent"
++            app:layout_constraintBottom_toBottomOf="@id/tv_color_line"
++            app:layout_constraintStart_toStartOf="parent"
++            android:layout_marginStart="16dp"/>
++
++        <ImageView
++            android:layout_width="22dp"
++            android:layout_height="22dp"
++            android:src="@drawable/ic_trash_can"
++            android:padding="2dp"
++            app:layout_constraintTop_toTopOf="parent"
++            app:layout_constraintBottom_toBottomOf="@id/tv_color_line"
++            app:layout_constraintEnd_toEndOf="parent"
++            android:layout_marginEnd="12dp"/>
++
++
++        <TextView
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:text="Поменять цвет"
++            android:textColor="@color/white"
++            android:textSize="16dp"
++            app:layout_constraintTop_toTopOf="@id/tv_color_line"
++            app:layout_constraintStart_toStartOf="parent"
++            android:layout_marginStart="16dp"
++            android:layout_marginTop="4dp"/>
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            android:gravity="center"
++            app:layout_constraintTop_toTopOf="@id/tv_color_line"
++            android:layout_marginTop="30dp">
++
++            <ImageView
++                android:id="@+id/v_yellow"
++                android:layout_width="40dp"
++                android:layout_height="30dp"
++                android:src="@drawable/ic_small_rounded_bg"
++                app:tint="@color/yellow_note"/>
++
++            <ImageView
++                android:id="@+id/v_purple"
++                android:layout_width="40dp"
++                android:layout_height="30dp"
++                android:src="@drawable/ic_small_rounded_bg"
++                android:layout_marginHorizontal="6dp"
++                app:tint="@color/purple_note"/>
++
++            <ImageView
++                android:id="@+id/v_rose"
++                android:layout_width="40dp"
++                android:layout_height="30dp"
++                android:src="@drawable/ic_small_rounded_bg"
++                app:tint="@color/rose_note"/>
++
++        </LinearLayout>
++
++        <LinearLayout
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            android:gravity="center"
++            app:layout_constraintTop_toTopOf="@id/tv_color_line"
++            android:layout_marginTop="66dp">
++
++            <ImageView
++                android:id="@+id/v_red"
++                android:layout_width="40dp"
++                android:layout_height="30dp"
++                android:src="@drawable/ic_small_rounded_bg"
++                app:tint="@color/red_note"/>
++
++            <ImageView
++                android:id="@+id/v_green"
++                android:layout_width="40dp"
++                android:layout_height="30dp"
++                android:src="@drawable/ic_small_rounded_bg"
++                android:layout_marginHorizontal="6dp"
++                app:tint="@color/green_note"/>
++
++            <ImageView
++                android:id="@+id/v_blue"
++                android:layout_width="40dp"
++                android:layout_height="30dp"
++                android:src="@drawable/ic_small_rounded_bg"
++                app:tint="@color/blue_note"/>
++
++        </LinearLayout>
++
++
++
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
++
++
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.ui.main\n\nimport android.os.Bundle\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport androidx.fragment.app.Fragment\nimport androidx.navigation.fragment.findNavController\nimport androidx.recyclerview.widget.LinearLayoutManager\nimport androidx.recyclerview.widget.StaggeredGridLayoutManager\nimport com.example.secondappkt.App\nimport com.example.secondappkt.R\nimport com.example.secondappkt.data.models.NoteModel\nimport com.example.secondappkt.databinding.FragmentMainBinding\nimport com.example.secondappkt.ui.main.adapter.NotesAdapter\n\nclass MainFragment : Fragment() {\n\n    private lateinit var binding: FragmentMainBinding\n    private lateinit var adapter: NotesAdapter\n    var isLayoutChanged: Boolean = false\n\n    override fun onCreateView(\n        inflater: LayoutInflater, container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View? {\n        binding = FragmentMainBinding.inflate(inflater, container, false)\n        return binding.root\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        loadData()\n        initView()\n        setupListener()\n\n        binding.btnChangeLayout.setOnClickListener {\n            if(isLayoutChanged){\n                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, 1)\n                isLayoutChanged = false\n                binding.btnChangeLayout.setImageResource(R.drawable.ic_linear_view)\n            } else {\n                binding.rvNotes.layoutManager = LinearLayoutManager(requireContext())\n                isLayoutChanged = true\n                binding.btnChangeLayout.setImageResource(R.drawable.ic_grid)\n            }\n        }\n    }\n\n    private fun setupListener() {\n        binding.fbCreate.setOnClickListener {\n            findNavController().navigate(R.id.createFragment)\n        }\n    }\n\n    private fun initView() {\n        adapter = NotesAdapter(loadData())\n        binding.rvNotes.adapter = adapter\n    }\n\n\n    private fun loadData(): List<NoteModel> {\n        return App.db.dao().getAllNote();\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt b/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt
+--- a/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/java/com/example/secondappkt/ui/main/MainFragment.kt	(date 1758910865373)
+@@ -17,8 +17,8 @@
+ class MainFragment : Fragment() {
+ 
+     private lateinit var binding: FragmentMainBinding
+-    private lateinit var adapter: NotesAdapter
+-    var isLayoutChanged: Boolean = false
++    private val adapter = NotesAdapter(::onLongNoteClick)
++    var isLayoutChanged: Boolean = true
+ 
+     override fun onCreateView(
+         inflater: LayoutInflater, container: ViewGroup?,
+@@ -36,7 +36,7 @@
+ 
+         binding.btnChangeLayout.setOnClickListener {
+             if(isLayoutChanged){
+-                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, 1)
++                binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                 isLayoutChanged = false
+                 binding.btnChangeLayout.setImageResource(R.drawable.ic_linear_view)
+             } else {
+@@ -54,12 +54,16 @@
+     }
+ 
+     private fun initView() {
+-        adapter = NotesAdapter(loadData())
+         binding.rvNotes.adapter = adapter
+     }
+ 
++    private fun loadData() {
++        val list: List<NoteModel> = App.db.dao().getAllNote()
++        adapter.addAllNotes(list)
++    }
+ 
+-    private fun loadData(): List<NoteModel> {
+-        return App.db.dao().getAllNote();
++    private fun onLongNoteClick(notes: NoteModel){
++        App.db.dao().deleteNote(notes)
++        loadData()
+     }
+-}
+\ No newline at end of file
++}
+Index: app/src/main/res/navigation/nav_host.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/nav_host\"\n    app:startDestination=\"@id/onBoardFragment\">\n\n    <fragment\n        android:id=\"@+id/mainFragment\"\n        android:name=\"com.example.secondappkt.ui.main.MainFragment\"\n        android:label=\"fragment_main\"\n        tools:layout=\"@layout/fragment_main\" >\n<!--        <action-->\n<!--            android:id=\"@+id/action_mainFragment_to_detailCarFragment\"-->\n<!--            app:destination=\"@id/detailCarFragment\" />-->\n    </fragment>\n\n<!--    <fragment-->\n<!--        android:id=\"@+id/detailCarFragment\"-->\n<!--        android:name=\"com.example.secondappkt.ui.detail.DetailCarFragment\"-->\n<!--        android:label=\"fragment_detial_car\"-->\n<!--        tools:layout=\"@layout/fragment_detial_car\">-->\n\n<!--        <argument-->\n<!--            android:name=\"carModel\"-->\n<!--            app:argType=\"com.example.secondappkt.data.models.CarModel\"-->\n<!--            app:nullable=\"false\" />-->\n<!--    </fragment>-->\n    <fragment\n        android:id=\"@+id/onBoardFragment\"\n        android:name=\"com.example.secondappkt.ui.on_board.OnBoardFragment\"\n        android:label=\"fragment_on_board\"\n        tools:layout=\"@layout/fragment_on_board\">\n        <action\n            android:id=\"@+id/action_onBoardFragment_to_mainFragment\"\n            app:destination=\"@id/mainFragment\"\n            app:popUpTo=\"@id/onBoardFragment\"\n            app:popUpToInclusive=\"true\"/>\n    </fragment>\n    <fragment\n        android:id=\"@+id/createFragment\"\n        android:name=\"com.example.secondappkt.ui.create.CreateFragment\"\n        android:label=\"fragment_create\"\n        tools:layout=\"@layout/fragment_create\" />\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/nav_host.xml b/app/src/main/res/navigation/nav_host.xml
+--- a/app/src/main/res/navigation/nav_host.xml	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/res/navigation/nav_host.xml	(date 1758910865399)
+@@ -10,22 +10,30 @@
+         android:name="com.example.secondappkt.ui.main.MainFragment"
+         android:label="fragment_main"
+         tools:layout="@layout/fragment_main" >
+-<!--        <action-->
+-<!--            android:id="@+id/action_mainFragment_to_detailCarFragment"-->
+-<!--            app:destination="@id/detailCarFragment" />-->
++        <!--        <action-->
++        <!--            android:id="@+id/action_mainFragment_to_detailCarFragment"-->
++        <!--            app:destination="@id/detailCarFragment" />-->
++        <action
++            android:id="@+id/action_mainFragment_to_createFragment"
++            app:destination="@id/createFragment">
++            <argument
++                android:name="note"
++                app:nullable="true"
++                app:argType="com.example.secondappkt.data.models.NoteModel"/>
++        </action>
+     </fragment>
+ 
+-<!--    <fragment-->
+-<!--        android:id="@+id/detailCarFragment"-->
+-<!--        android:name="com.example.secondappkt.ui.detail.DetailCarFragment"-->
+-<!--        android:label="fragment_detial_car"-->
+-<!--        tools:layout="@layout/fragment_detial_car">-->
++    <!--    <fragment-->
++    <!--        android:id="@+id/detailCarFragment"-->
++    <!--        android:name="com.example.secondappkt.ui.detail.DetailCarFragment"-->
++    <!--        android:label="fragment_detial_car"-->
++    <!--        tools:layout="@layout/fragment_detial_car">-->
+ 
+-<!--        <argument-->
+-<!--            android:name="carModel"-->
+-<!--            app:argType="com.example.secondappkt.data.models.CarModel"-->
+-<!--            app:nullable="false" />-->
+-<!--    </fragment>-->
++    <!--        <argument-->
++    <!--            android:name="carModel"-->
++    <!--            app:argType="com.example.secondappkt.data.models.CarModel"-->
++    <!--            app:nullable="false" />-->
++    <!--    </fragment>-->
+     <fragment
+         android:id="@+id/onBoardFragment"
+         android:name="com.example.secondappkt.ui.on_board.OnBoardFragment"
+@@ -41,5 +49,11 @@
+         android:id="@+id/createFragment"
+         android:name="com.example.secondappkt.ui.create.CreateFragment"
+         android:label="fragment_create"
+-        tools:layout="@layout/fragment_create" />
++        tools:layout="@layout/fragment_create">
++        <argument
++            android:name="note"
++            app:nullable="true"
++            app:argType="com.example.secondappkt.data.models.NoteModel"/>
++    </fragment>
++
+ </navigation>
+\ No newline at end of file
+Index: app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.data.models\n\nimport androidx.room.Entity\nimport androidx.room.PrimaryKey\n\n@Entity( tableName = \"note_list\")\ndata class NoteModel(\n    @PrimaryKey(autoGenerate = true)\n    val id: Int? = null,\n    val title: String,\n    val desc: String,\n)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt b/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt
+--- a/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/java/com/example/secondappkt/data/models/NoteModel.kt	(date 1758910868461)
+@@ -9,4 +9,6 @@
+     val id: Int? = null,
+     val title: String,
+     val desc: String,
++    val color: Int,
++    val dateCreated: Long = System.currentTimeMillis()
+ )
+Index: app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.ui.main.adapter\n\nimport android.view.LayoutInflater\nimport android.view.ViewGroup\nimport androidx.recyclerview.widget.RecyclerView\nimport com.example.secondappkt.data.models.NoteModel\nimport com.example.secondappkt.databinding.ItemNoteBinding\n\nclass NotesAdapter(val notesList: List<NoteModel>) :\n    RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {\n\n    override fun onCreateViewHolder(\n        parent: ViewGroup,\n        viewType: Int\n    ): NotesViewHolder {\n        return NotesViewHolder(\n            ItemNoteBinding.inflate(\n                LayoutInflater.from(parent.context),\n                parent,\n                false\n            )\n        )\n    }\n\n    override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {\n        holder.bind(notesList[position])\n    }\n\n    override fun getItemCount() = notesList.size\n\n    inner class NotesViewHolder(private val binding: ItemNoteBinding) :\n        RecyclerView.ViewHolder(binding.root) {\n        fun bind(noteModel: NoteModel) = with(binding) {\n            tvTitle.text = noteModel.title\n            tvDesc.text = noteModel.desc\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt b/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt
+--- a/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/java/com/example/secondappkt/ui/main/adapter/NotesAdapter.kt	(date 1758910874764)
+@@ -6,9 +6,18 @@
+ import com.example.secondappkt.data.models.NoteModel
+ import com.example.secondappkt.databinding.ItemNoteBinding
+ 
+-class NotesAdapter(val notesList: List<NoteModel>) :
++class NotesAdapter(val onLongClick:(NoteModel)-> Unit) :
+     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+ 
++    private val notesList = arrayListOf<NoteModel>()
++
++    fun addAllNotes(list: List<NoteModel>){
++        notesList.clear()
++        notesList.addAll(list)
++        notifyDataSetChanged()
++    }
++
++
+     override fun onCreateViewHolder(
+         parent: ViewGroup,
+         viewType: Int
+@@ -33,6 +42,15 @@
+         fun bind(noteModel: NoteModel) = with(binding) {
+             tvTitle.text = noteModel.title
+             tvDesc.text = noteModel.desc
++            ivNoteBg.setColorFilter(noteModel.color)
++
++            val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
++            tvDate.text = formatter.format(java.util.Date(noteModel.dateCreated))
++
++            itemView.setOnLongClickListener {
++                onLongClick(noteModel)
++                false
++            }
+         }
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:background=\"@color/bg_gray\"\n    tools:context=\".ui.main.MainFragment\">\n\n    <TextView\n        android:id=\"@+id/tvAllNotes\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"14dp\"\n        android:text=\"Все заметки\"\n        android:textColor=\"@color/white\"\n        android:textSize=\"18sp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n    <ImageView\n        android:layout_width=\"20dp\"\n        android:layout_height=\"20dp\"\n        android:src=\"@drawable/ic_menu\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"@id/tvAllNotes\"\n        app:layout_constraintBottom_toBottomOf=\"@id/tvAllNotes\"\n        android:layout_marginStart=\"18dp\" />\n\n    <ImageView\n        android:id=\"@+id/btn_change_layout\"\n        android:layout_width=\"20dp\"\n        android:layout_height=\"20dp\"\n        android:src=\"@drawable/ic_grid\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"@id/tvAllNotes\"\n        app:layout_constraintBottom_toBottomOf=\"@id/tvAllNotes\"\n        android:layout_marginEnd=\"18dp\" />\n\n    <ImageView\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"54dp\"\n        android:id=\"@+id/iv_search_note\"\n        android:src=\"@drawable/rounded_bg\"\n        android:layout_marginHorizontal=\"16dp\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/tvAllNotes\"\n        android:layout_marginTop=\"30dp\"\n        app:tint=\"#535353\"/>\n    \n    <ImageView\n        android:layout_width=\"22dp\"\n        android:layout_height=\"22dp\"\n        android:id=\"@+id/iv_search_sign\"\n        android:src=\"@drawable/ic_search_sign\"\n        android:layout_marginStart=\"18dp\"\n        app:layout_constraintStart_toStartOf=\"@id/iv_search_note\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_search_note\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_search_note\"/>\n\n    <EditText\n        android:layout_width=\"0dp\"\n        android:layout_height=\"0dp\"\n        android:id=\"@+id/et_search_note\"\n        android:layout_marginStart=\"48dp\"\n        android:textColor=\"@color/white\"\n        android:textSize=\"20dp\"\n        android:background=\"@android:color/transparent\"\n        app:layout_constraintStart_toStartOf=\"@id/iv_search_note\"\n        app:layout_constraintEnd_toEndOf=\"@id/iv_search_note\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_search_note\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_search_note\"/>\n\n    <TextView\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:id=\"@+id/tv_search_note\"\n        android:text=\"Поиск заметок\"\n        android:textSize=\"18sp\"\n        android:textColor=\"@color/gray\"\n        android:layout_marginStart=\"10dp\"\n        app:layout_constraintStart_toEndOf=\"@id/iv_search_sign\"\n        app:layout_constraintTop_toTopOf=\"@id/iv_search_note\"\n        app:layout_constraintBottom_toBottomOf=\"@id/iv_search_note\"/>\n\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/rv_notes\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"0dp\"\n        android:clipToPadding=\"false\"\n        android:layout_marginTop=\"12dp\"\n        android:layout_marginEnd=\"12dp\"\n        app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@id/iv_search_note\"\n        app:layout_constraintVertical_bias=\"0.0\"\n        tools:layout_editor_absoluteX=\"6dp\"\n        tools:listitem=\"@layout/item_note\" />\n\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\n        android:layout_width=\"wrap_content\"\n        android:id=\"@+id/fb_create\"\n        android:backgroundTint=\"@color/orange\"\n        app:srcCompat=\"@drawable/ic_plus\"\n        app:tint=\"@color/white\"\n        android:layout_height=\"wrap_content\"\n        android:layout_margin=\"16dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\" />\n\n\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/fragment_main.xml b/app/src/main/res/layout/fragment_main.xml
+--- a/app/src/main/res/layout/fragment_main.xml	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/res/layout/fragment_main.xml	(date 1758910877662)
+@@ -49,7 +49,7 @@
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/tvAllNotes"
+         android:layout_marginTop="30dp"
+-        app:tint="#535353"/>
++        app:tint="@color/search_gray"/>
+     
+     <ImageView
+         android:layout_width="22dp"
+Index: app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.ui.create\n\nimport android.os.Bundle\nimport android.text.Editable\nimport android.text.TextWatcher\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport androidx.core.content.ContextCompat\nimport androidx.fragment.app.Fragment\nimport androidx.navigation.fragment.findNavController\nimport com.example.secondappkt.App\nimport com.example.secondappkt.R\nimport com.example.secondappkt.data.models.NoteModel\nimport com.example.secondappkt.databinding.FragmentCreateBinding\n\nclass CreateFragment : Fragment() {\n\n    private lateinit var binding: FragmentCreateBinding\n\n    override fun onCreateView(\n        inflater: LayoutInflater, container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View? {\n        binding = FragmentCreateBinding.inflate(inflater, container, false)\n        return binding.root\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n\n        binding.btnReady.setOnClickListener {\n            val title = binding.etTitle.text.toString()\n            val desc = binding.etDesc.text.toString()\n            App.db.dao().addNote(NoteModel(title = title, desc = desc))\n            findNavController().navigateUp()\n        }\n\n\n\n\n        binding.etTitle.addTextChangedListener(object : TextWatcher{\n            override fun afterTextChanged(p0: Editable?) {\n            }\n            override fun beforeTextChanged(\n                p0: CharSequence?,\n                p1: Int,\n                p2: Int,\n                p3: Int\n            ) {}\n\n            override fun onTextChanged(\n                p0: CharSequence?,\n                p1: Int,\n                p2: Int,\n                p3: Int\n            ) {\n                val orange = ContextCompat.getColor(requireContext(), R.color.orange)\n                val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)\n                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0){\n                    binding.ivPickColor.setColorFilter(orange)\n\n                } else {\n                    binding.ivPickColor.setColorFilter(grayDark)\n                }\n            }\n\n        })\n\n        binding.btnReady.visibility = View.GONE\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt b/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt
+--- a/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/java/com/example/secondappkt/ui/create/CreateFragment.kt	(date 1758910880878)
+@@ -29,16 +29,18 @@
+     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+         super.onViewCreated(view, savedInstanceState)
+ 
++        val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
++        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
++
++        var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
+         binding.btnReady.setOnClickListener {
+             val title = binding.etTitle.text.toString()
+             val desc = binding.etDesc.text.toString()
+-            App.db.dao().addNote(NoteModel(title = title, desc = desc))
++            App.db.dao().addNote(NoteModel(title = title, desc = desc, color = color))
+             findNavController().navigateUp()
+         }
+ 
+ 
+-
+-
+         binding.etTitle.addTextChangedListener(object : TextWatcher{
+             override fun afterTextChanged(p0: Editable?) {
+             }
+@@ -55,18 +57,57 @@
+                 p2: Int,
+                 p3: Int
+             ) {
+-                val orange = ContextCompat.getColor(requireContext(), R.color.orange)
+-                val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)
+-                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0){
+-                    binding.ivPickColor.setColorFilter(orange)
+-
+-                } else {
+-                    binding.ivPickColor.setColorFilter(grayDark)
+-                }
+-            }
++                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0){
++                    binding.btnReady.visibility = View.VISIBLE
++                } else {
++                    binding.btnReady.visibility = View.GONE
++                }
++            }
++        })
++
++
++        val orange = ContextCompat.getColor(requireContext(), R.color.orange)
++        val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)
++        var pickColorPressed = true
++        binding.dialogColorPicker.visibility = View.GONE
++        binding.btnReady.visibility = View.GONE
++        binding.ivPickColor.setOnClickListener {
++            if(pickColorPressed){
++                binding.ivPickColor.setColorFilter(orange)
++                binding.dialogColorPicker.visibility = View.VISIBLE
++                pickColorPressed = false
++            } else {
++                binding.ivPickColor.setColorFilter(grayDark)
++                binding.dialogColorPicker.visibility = View.GONE
++                pickColorPressed = true
++            }
++        }
+ 
+-        })
+ 
+-        binding.btnReady.visibility = View.GONE
++        val yellow = ContextCompat.getColor(requireContext(), R.color.yellow_note)
++        val purple = ContextCompat.getColor(requireContext(), R.color.purple_note)
++        val rose = ContextCompat.getColor(requireContext(), R.color.rose_note)
++        val red = ContextCompat.getColor(requireContext(), R.color.red_note)
++        val green = ContextCompat.getColor(requireContext(), R.color.green_note)
++        val blue = ContextCompat.getColor(requireContext(), R.color.blue_note)
++        binding.vYellow.setOnClickListener {
++            color = yellow
++        }
++        binding.vPurple.setOnClickListener {
++            color = purple
++        }
++        binding.vRose.setOnClickListener {
++            color = rose
++        }
++        binding.vRed.setOnClickListener {
++            color = red
++        }
++        binding.vGreen.setOnClickListener {
++            color = green
++        }
++        binding.vBlue.setOnClickListener {
++            color = blue
++        }
++
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.secondappkt.data.local.room\n\nimport androidx.room.Dao\nimport androidx.room.Insert\nimport androidx.room.Query\nimport com.example.secondappkt.data.models.NoteModel\n\n@Dao\ninterface NoteDao {\n    @Query (\"SELECT * FROM note_list\")\n    fun getAllNote(): List<NoteModel>\n\n    @Insert\n    fun addNote(taskModel: NoteModel)\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt b/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt
+--- a/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt	(revision 8dcee9a62b20f8ef1b7e27e8ceab8bd6231283eb)
++++ b/app/src/main/java/com/example/secondappkt/data/local/room/NoteDao.kt	(date 1758910883699)
+@@ -1,15 +1,19 @@
+ package com.example.secondappkt.data.local.room
+ 
+ import androidx.room.Dao
++import androidx.room.Delete
+ import androidx.room.Insert
+ import androidx.room.Query
+ import com.example.secondappkt.data.models.NoteModel
+ 
+ @Dao
+ interface NoteDao {
+-    @Query ("SELECT * FROM note_list")
++    @Query ("SELECT * FROM note_list ORDER BY id DESC")
+     fun getAllNote(): List<NoteModel>
+ 
+     @Insert
+-    fun addNote(taskModel: NoteModel)
++    fun addNote(noteModel: NoteModel)
++
++    @Delete
++    fun deleteNote(noteModel: NoteModel)
+ }
+\ No newline at end of file
+Index: app/src/main/res/drawable/accept_rounded_bg.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/accept_rounded_bg.xml b/app/src/main/res/drawable/accept_rounded_bg.xml
+new file mode 100644
+--- /dev/null	(date 1758910883722)
++++ b/app/src/main/res/drawable/accept_rounded_bg.xml	(date 1758910883722)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <corners android:radius="12dp"/>
++    <solid android:color="@color/orange"/>
++</shape>
+\ No newline at end of file
+Index: app/src/main/res/drawable/decline_rounded_bg.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/decline_rounded_bg.xml b/app/src/main/res/drawable/decline_rounded_bg.xml
+new file mode 100644
+--- /dev/null	(date 1758910883719)
++++ b/app/src/main/res/drawable/decline_rounded_bg.xml	(date 1758910883719)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="rectangle">
++    <corners android:radius="12dp"/>
++    <solid android:color="@color/search_gray"/>
++    <stroke android:width="0.6dp" android:color="@color/white"/>
++</shape>
+\ No newline at end of file
