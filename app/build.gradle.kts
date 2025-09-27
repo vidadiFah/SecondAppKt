@@ -1,8 +1,10 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.plugin.parcelize") // ✅ correct plugin
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
     id("androidx.navigation.safeargs.kotlin")
+    id("org.jetbrains.kotlin.plugin.parcelize")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -41,7 +43,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -53,10 +54,14 @@ dependencies {
 
     // Nav Host
     val navVersion = "2.9.3"
-    implementation ("androidx.navigation:navigation-fragment:$navVersion")
-    implementation ("androidx.navigation:navigation-ui:$navVersion")
+    implementation("androidx.navigation:navigation-fragment:$navVersion")
+    implementation("androidx.navigation:navigation-ui:$navVersion")
 
     implementation("com.github.bumptech.glide:glide:5.0.4")
-
     implementation("com.tbuonomo:dotsindicator:5.1.0")
+
+    // Room
+    val roomVersion = "2.8.0"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 }

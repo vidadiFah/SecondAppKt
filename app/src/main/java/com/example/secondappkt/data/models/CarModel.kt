@@ -2,9 +2,9 @@ package com.example.secondappkt.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import com.example.secondappkt.enums.Shape
-import com.example.secondappkt.enums.Transmission
-import com.example.secondappkt.enums.YesNo
+import com.example.secondappkt.core.enums.Shape
+import com.example.secondappkt.core.enums.Transmission
+import com.example.secondappkt.core.enums.YesNo
 
 @Parcelize
 data class CarModel(
