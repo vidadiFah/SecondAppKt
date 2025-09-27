@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="@color/bg_gray"
     tools:context=".ui.main.MainFragment">
 
@@ -23,77 +24,99 @@
     <ImageView
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginStart="18dp"
         android:src="@drawable/ic_menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvAllNotes"
         app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
-        android:layout_marginStart="18dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAllNotes" />
 
     <ImageView
         android:id="@+id/btn_change_layout"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginEnd="18dp"
         android:src="@drawable/ic_grid"
+        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAllNotes"/>
+
+    <ImageView
+        android:id="@+id/btn_calendar"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="44dp"
+        android:src="@drawable/ic_calendar"
+        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvAllNotes"
-        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
-        android:layout_marginEnd="18dp" />
+        app:tint="@color/light_gray" />
 
     <ImageView
+        android:id="@+id/btn_clock"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="80dp"
+        android:src="@drawable/ic_clock"
+        app:layout_constraintBottom_toBottomOf="@id/tvAllNotes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAllNotes"
+        app:tint="@color/light_gray" />
+
+    <ImageView
+        android:id="@+id/iv_search_note"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:id="@+id/iv_search_note"
-        android:src="@drawable/rounded_bg"
         android:layout_marginHorizontal="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvAllNotes"
         android:layout_marginTop="30dp"
-        app:tint="#535353"/>
-    
+        android:src="@drawable/rounded_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAllNotes"
+        app:tint="@color/search_gray" />
+
     <ImageView
+        android:id="@+id/iv_search_sign"
         android:layout_width="22dp"
         android:layout_height="22dp"
-        android:id="@+id/iv_search_sign"
-        android:src="@drawable/ic_search_sign"
         android:layout_marginStart="18dp"
+        android:src="@drawable/ic_search_sign"
+        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"
         app:layout_constraintStart_toStartOf="@id/iv_search_note"
-        app:layout_constraintTop_toTopOf="@id/iv_search_note"
-        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"/>
+        app:layout_constraintTop_toTopOf="@id/iv_search_note" />
 
     <EditText
+        android:id="@+id/et_search_note"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/et_search_note"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="11dp"
+        android:background="@android:color/transparent"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="@id/iv_search_note"
+        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"
         app:layout_constraintEnd_toEndOf="@id/iv_search_note"
-        app:layout_constraintTop_toTopOf="@id/iv_search_note"
-        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"/>
+        app:layout_constraintStart_toEndOf="@id/iv_search_sign"
+        app:layout_constraintTop_toTopOf="@id/iv_search_note" />
 
     <TextView
+        android:id="@+id/tv_search_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_search_note"
-        android:text="Поиск заметок"
-        android:textSize="18sp"
-        android:textColor="@color/gray"
         android:layout_marginStart="10dp"
+        android:text="Поиск заметок"
+        android:textColor="@color/gray"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"
         app:layout_constraintStart_toEndOf="@id/iv_search_sign"
-        app:layout_constraintTop_toTopOf="@id/iv_search_note"
-        app:layout_constraintBottom_toBottomOf="@id/iv_search_note"/>
+        app:layout_constraintTop_toTopOf="@id/iv_search_note" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:clipToPadding="false"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
+        android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_search_note"
@@ -102,15 +125,90 @@
         tools:listitem="@layout/item_note" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
         android:id="@+id/fb_create"
-        android:backgroundTint="@color/orange"
-        app:srcCompat="@drawable/ic_plus"
-        app:tint="@color/white"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/orange"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_plus"
+        app:tint="@color/white" />
+
+    <View
+        android:id="@+id/vDarkLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#A6000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dialog_delete_note_main"
+        android:layout_width="320dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/rounded_bg"
+            app:tint="@color/search_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Удалить заметку?"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_decline_main_frag_dialog"
+                android:layout_width="128dp"
+                android:layout_height="48dp"
+                android:background="@drawable/decline_rounded_bg"
+                android:text="Отмена"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_delete_main_frag_dialog"
+                android:layout_width="128dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="22dp"
+                android:background="@drawable/accept_rounded_bg"
+                android:text="Удалить"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:backgroundTint="@null"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/orange" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

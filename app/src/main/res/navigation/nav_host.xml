@@ -10,22 +10,30 @@
         android:name="com.example.secondappkt.ui.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
-<!--        <action-->
-<!--            android:id="@+id/action_mainFragment_to_detailCarFragment"-->
-<!--            app:destination="@id/detailCarFragment" />-->
+        <!--        <action-->
+        <!--            android:id="@+id/action_mainFragment_to_detailCarFragment"-->
+        <!--            app:destination="@id/detailCarFragment" />-->
+        <action
+            android:id="@+id/action_mainFragment_to_createFragment"
+            app:destination="@id/createFragment">
+            <argument
+                android:name="note"
+                app:nullable="true"
+                app:argType="com.example.secondappkt.data.models.NoteModel"/>
+        </action>
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/detailCarFragment"-->
-<!--        android:name="com.example.secondappkt.ui.detail.DetailCarFragment"-->
-<!--        android:label="fragment_detial_car"-->
-<!--        tools:layout="@layout/fragment_detial_car">-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/detailCarFragment"-->
+    <!--        android:name="com.example.secondappkt.ui.detail.DetailCarFragment"-->
+    <!--        android:label="fragment_detial_car"-->
+    <!--        tools:layout="@layout/fragment_detial_car">-->
 
-<!--        <argument-->
-<!--            android:name="carModel"-->
-<!--            app:argType="com.example.secondappkt.data.models.CarModel"-->
-<!--            app:nullable="false" />-->
-<!--    </fragment>-->
+    <!--        <argument-->
+    <!--            android:name="carModel"-->
+    <!--            app:argType="com.example.secondappkt.data.models.CarModel"-->
+    <!--            app:nullable="false" />-->
+    <!--    </fragment>-->
     <fragment
         android:id="@+id/onBoardFragment"
         android:name="com.example.secondappkt.ui.on_board.OnBoardFragment"
@@ -41,5 +49,11 @@
         android:id="@+id/createFragment"
         android:name="com.example.secondappkt.ui.create.CreateFragment"
         android:label="fragment_create"
-        tools:layout="@layout/fragment_create" />
+        tools:layout="@layout/fragment_create">
+        <argument
+            android:name="note"
+            app:nullable="true"
+            app:argType="com.example.secondappkt.data.models.NoteModel"/>
+    </fragment>
+
 </navigation>

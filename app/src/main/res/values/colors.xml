@@ -5,8 +5,15 @@
     <color name="gray">#CACACA</color>
     <color name="gray_dark">#666666</color>
     <color name="blue">#3954FF</color>
+    <color name="red">#FF3B3B</color>
     <color name="orange">#D88B02</color>
     <color name="light_gray">#CFCFCF</color>
+    <color name="search_gray">#535353</color>
     <color name="bg_gray">#252525</color>
-    <color name="yellow">#FFF599</color>
+    <color name="yellow_note">#FFF599</color>
+    <color name="red_note">#FF9E9E</color>
+    <color name="green_note">#91F48F</color>
+    <color name="blue_note">#9EFFFF</color>
+    <color name="purple_note">#B69CFF</color>
+    <color name="rose_note">#FD99FF</color>
 </resources>
