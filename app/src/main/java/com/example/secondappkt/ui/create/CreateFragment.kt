@@ -1,6 +1,8 @@
 package com.example.secondappkt.ui.create
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +14,6 @@ import com.example.secondappkt.App
 import com.example.secondappkt.R
 import com.example.secondappkt.data.models.NoteModel
 import com.example.secondappkt.databinding.FragmentCreateBinding
-import com.example.secondappkt.utils.formatDate
-import com.example.secondappkt.utils.listenerEdit
 
 class CreateFragment : Fragment() {
 
@@ -34,7 +34,7 @@ class CreateFragment : Fragment() {
         val note = args.note
 
         val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
-        binding.tvOnCreateDate.formatDate(System.currentTimeMillis())
+        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
 
         var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
 
@@ -42,13 +42,9 @@ class CreateFragment : Fragment() {
             binding.etTitle.setText(note.title)
             binding.etDesc.setText(note.desc)
             color = note.color
-            binding.tvOnCreateDate.formatDate(note.dateCreated)
+            binding.tvOnCreateDate.text = formatter.format(java.util.Date(note.dateCreated))
         }
 
-        val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
-        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
-
-        var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
         binding.btnReady.setOnClickListener {
             val title = binding.etTitle.text.toString()
             val desc = binding.etDesc.text.toString()
@@ -75,17 +71,32 @@ class CreateFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.etTitle.listenerEdit(
-            onTextChanged = {
-                listenerDane()
-            },
-        )
 
-        binding.etDesc.listenerEdit(
-            onTextChanged = {
-                listenerDane()
-            },
-        )
+        binding.etTitle.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(
+                p0: CharSequence?,
+                p1: Int,
+                p2: Int,
+                p3: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                p0: CharSequence?,
+                p1: Int,
+                p2: Int,
+                p3: Int
+            ) {
+                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0) {
+                    binding.btnReady.visibility = View.VISIBLE
+                } else {
+                    binding.btnReady.visibility = View.GONE
+                }
+            }
+        })
 
 
         val orange = ContextCompat.getColor(requireContext(), R.color.orange)
@@ -154,13 +165,5 @@ class CreateFragment : Fragment() {
             }
         }
 
-    }
-
-    fun listenerDane(){
-        if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0) {
-            binding.btnReady.visibility = View.VISIBLE
-        } else {
-            binding.btnReady.visibility = View.GONE
-        }
     }
 }
