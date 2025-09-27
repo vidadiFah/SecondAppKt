@@ -45,6 +45,10 @@ class CreateFragment : Fragment() {
             binding.tvOnCreateDate.formatDate(note.dateCreated)
         }
 
+        val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
+        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
+
+        var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
         binding.btnReady.setOnClickListener {
             val title = binding.etTitle.text.toString()
             val desc = binding.etDesc.text.toString()
