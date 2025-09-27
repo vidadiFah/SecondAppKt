@@ -2,4 +2,5 @@
     <string name="app_name">SecondAppKt</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_web_client_id">101744388907-3qrio4jv66rv4chsv2sesnc2afe8lde2.apps.googleusercontent.com</string>
 </resources>
