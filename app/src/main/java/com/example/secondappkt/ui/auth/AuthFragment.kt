@@ -3,12 +3,10 @@ package com.example.secondappkt.ui.auth
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import com.example.secondappkt.R
@@ -61,7 +59,6 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e("ololo", "onViewCreated: OnBoard", )
         binding.btnAuth.setOnClickListener {
             signInLauncher.launch(signInOption.signInIntent  )
         }

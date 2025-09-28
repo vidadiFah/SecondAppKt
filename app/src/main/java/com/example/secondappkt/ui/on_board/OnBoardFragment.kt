@@ -1,7 +1,6 @@
 package com.example.secondappkt.ui.on_board
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,6 @@ import com.example.secondappkt.data.models.OnBoardModel
 import com.example.secondappkt.databinding.FragmentOnBoardBinding
 import com.example.secondappkt.data.local.pref.Pref
 import com.example.secondappkt.ui.on_board.adapter.OnBoardAdapter
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding

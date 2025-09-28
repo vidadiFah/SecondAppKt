@@ -1,8 +1,6 @@
 package com.example.secondappkt.ui.create
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +12,14 @@ import com.example.secondappkt.App
 import com.example.secondappkt.R
 import com.example.secondappkt.data.models.NoteModel
 import com.example.secondappkt.databinding.FragmentCreateBinding
+import com.example.secondappkt.utils.formatDate
+import com.example.secondappkt.utils.listenerEdit
 
 class CreateFragment : Fragment() {
 
     private lateinit var binding: FragmentCreateBinding
     val args: CreateFragmentArgs by navArgs()
+    var btnPickColorPressed = true
 
 
     override fun onCreateView(
@@ -33,17 +34,22 @@ class CreateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val note = args.note
 
-        val formatter = java.text.SimpleDateFormat("dd MMM HH:mm", java.util.Locale.getDefault())
-        binding.tvOnCreateDate.text = formatter.format(java.util.Date(System.currentTimeMillis()))
+        arrowBack()
+
 
         var color: Int = ContextCompat.getColor(requireContext(), R.color.yellow_note)
+
 
         if (note != null) {
             binding.etTitle.setText(note.title)
             binding.etDesc.setText(note.desc)
             color = note.color
-            binding.tvOnCreateDate.text = formatter.format(java.util.Date(note.dateCreated))
+            binding.tvOnCreateDate.formatDate(note.dateCreated)
+        } else {
+            simpleDialogColor()
+            binding.tvOnCreateDate.formatDate(System.currentTimeMillis())
         }
+
 
         binding.btnReady.setOnClickListener {
             val title = binding.etTitle.text.toString()
@@ -71,48 +77,30 @@ class CreateFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-
-        binding.etTitle.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-            override fun beforeTextChanged(
-                p0: CharSequence?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                p0: CharSequence?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-                if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0) {
-                    binding.btnReady.visibility = View.VISIBLE
-                } else {
-                    binding.btnReady.visibility = View.GONE
-                }
-            }
-        })
+        binding.etTitle.listenerEdit(
+            onTextChanged = {
+                listenerDane()
+            },
+        )
+        binding.etDesc.listenerEdit(
+            onTextChanged = {
+                listenerDane()
+            },
+        )
 
 
         val orange = ContextCompat.getColor(requireContext(), R.color.orange)
         val grayDark = ContextCompat.getColor(requireContext(), R.color.gray_dark)
-        var pickColorPressed = true
+
         binding.dialogColorPicker.visibility = View.GONE
         binding.btnReady.visibility = View.GONE
         binding.ivPickColor.setOnClickListener {
-            if (pickColorPressed) {
+            if (btnPickColorPressed) {
                 binding.ivPickColor.setColorFilter(orange)
                 binding.dialogColorPicker.visibility = View.VISIBLE
-                pickColorPressed = false
+                btnPickColorPressed = false
             } else {
-                binding.ivPickColor.setColorFilter(grayDark)
-                binding.dialogColorPicker.visibility = View.GONE
-                pickColorPressed = true
+                closeColorDialog(grayDark)
             }
         }
 
@@ -125,21 +113,27 @@ class CreateFragment : Fragment() {
         val blue = ContextCompat.getColor(requireContext(), R.color.blue_note)
         binding.vYellow.setOnClickListener {
             color = yellow
+            closeColorDialog(grayDark)
         }
         binding.vPurple.setOnClickListener {
             color = purple
+            closeColorDialog(grayDark)
         }
         binding.vRose.setOnClickListener {
             color = rose
+            closeColorDialog(grayDark)
         }
         binding.vRed.setOnClickListener {
             color = red
+            closeColorDialog(grayDark)
         }
         binding.vGreen.setOnClickListener {
             color = green
+            closeColorDialog(grayDark)
         }
         binding.vBlue.setOnClickListener {
             color = blue
+            closeColorDialog(grayDark)
         }
 
 
@@ -165,5 +159,36 @@ class CreateFragment : Fragment() {
             }
         }
 
+
+
     }
+
+    fun listenerDane(){
+        if (binding.etTitle.length() > 0 || binding.etDesc.length() > 0) {
+            binding.btnReady.visibility = View.VISIBLE
+        } else {
+            binding.btnReady.visibility = View.GONE
+        }
+    }
+
+    fun closeColorDialog(color: Int) {
+        binding.ivPickColor.setColorFilter(color)
+        binding.dialogColorPicker.visibility = View.GONE
+        btnPickColorPressed = true
+    }
+
+    fun arrowBack(){
+        binding.ivArrowLeft.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
+    fun simpleDialogColor(){
+        binding.vColorLine2.visibility = View.VISIBLE
+        binding.dialogColorPicker.maxHeight = 300
+        binding.btnDeleteOnCreate.visibility = View.GONE
+        binding.tvDelete.visibility = View.GONE
+        binding.vColorLine.visibility = View.GONE
+    }
+
 }

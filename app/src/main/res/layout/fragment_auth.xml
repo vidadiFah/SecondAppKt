@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     android:background="@color/bg_gray">
 
     <TextView
@@ -13,7 +14,7 @@
         android:id="@+id/tv_notes_reg"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="70dp"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,9 +27,8 @@
         android:src="@drawable/ic_note_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_notes_reg"
+        android:layout_marginTop="60dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,8 +50,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_auth"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+/>
 
     <ImageView
         android:layout_width="22dp"

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
     tools:context=".ui.on_board.OnBoardFragment">
 
     <ScrollView

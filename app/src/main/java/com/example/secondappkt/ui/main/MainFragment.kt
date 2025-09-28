@@ -1,11 +1,9 @@
 package com.example.secondappkt.ui.main
 
+import android.animation.ObjectAnimator
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,11 +17,18 @@ import com.example.secondappkt.R
 import com.example.secondappkt.data.models.NoteModel
 import com.example.secondappkt.ui.main.adapter.NotesAdapter
 import com.example.secondappkt.utils.listenerEdit
+import com.example.secondappkt.utils.loadImg
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
+    private val auth: FirebaseAuth = Firebase.auth
     private val adapter = NotesAdapter(::onLongNoteClick, ::onClick)
     private var pickedDate: Calendar? = null
     private var pickedTime: Pair<Int, Int>? = null
@@ -43,10 +48,41 @@ class MainFragment : Fragment() {
         initView()
         setupLister()
 
+
+        val userName: String = auth.currentUser?.displayName.toString()
+        binding.tvUserName.text = userName
+        binding.ivUserAvatar.loadImg(auth.currentUser?.photoUrl.toString())
+        binding.btnMenu.setOnClickListener {
+            binding.vDarkLayerMenu.visibility = View.VISIBLE
+            val animator = ObjectAnimator.ofFloat(binding.conMenu, "translationX", -1000f, 0f)
+            animator.duration = 400
+            binding.conMenu.visibility = View.VISIBLE
+            animator.start()
+        }
+        binding.vDarkLayerMenu.setOnClickListener {
+            binding.vDarkLayerMenu.visibility = View.GONE
+            val animator = ObjectAnimator.ofFloat(binding.conMenu, "translationX", 0f, -1000f)
+            animator.duration = 400
+            binding.conMenu.visibility = View.GONE
+            animator.start()
+        }
+        binding.btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build()
+            val googleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
+            googleSignInClient.signOut()
+            requireActivity().finishAffinity()
+        }
+
         binding.btnCalendar.setOnClickListener {
             val cal = Calendar.getInstance()
+
             val datePicker = DatePickerDialog(
                 requireContext(),
+                R.style.MyDatePickerStyle,
                 { _, year, month, dayOfMonth ->
                     if (pickedDate == null) pickedDate = Calendar.getInstance()
                     pickedDate?.set(year, month, dayOfMonth, 0, 0, 0)
@@ -61,28 +97,6 @@ class MainFragment : Fragment() {
             datePicker.show()
         }
 
-        binding.btnClock.setOnClickListener {
-            if (pickedDate == null) return@setOnClickListener
-
-            val cal = pickedDate!!
-            val timePicker = TimePickerDialog(
-                requireContext(),
-                { _, hourOfDay, minute ->
-                    pickedTime = Pair(hourOfDay, minute)
-
-                    cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
-                    cal.set(Calendar.MINUTE, minute)
-                    cal.set(Calendar.SECOND, 0)
-                    cal.set(Calendar.MILLISECOND, 0)
-
-                    searchNotesByDate(cal.timeInMillis, ignoreTime = false)
-                },
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true
-            )
-            timePicker.show()
-        }
         binding.etSearchNote.listenerEdit (onTextChanged={
             if (binding.etSearchNote.length() > 0) {
                 binding.tvSearchNote.visibility = View.GONE
